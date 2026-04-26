@@ -6,18 +6,24 @@
   <title>Teste Prático | Analista de Projetos Sênior</title>
   <style>
     :root {
-      --bg: #f6f8fb;
+      --bg: #f7f6fb;
       --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --primary: #123c69;
-      --primary-light: #e8f0fa;
-      --accent: #0f766e;
-      --danger: #b91c1c;
-      --warning: #b45309;
-      --success: #047857;
-      --border: #e5e7eb;
-      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --text: #232129;
+      --muted: #6d6878;
+      --primary: #2f2938;
+      --primary-light: #f1eef8;
+      --accent: #7c5cff;
+      --accent-dark: #5b3fd6;
+      --purple-soft: #ede8ff;
+      --danger: #b42318;
+      --warning: #b54708;
+      --moderate: #a16207;
+      --success: #4b5563;
+      --border: #e7e3ef;
+      --shadow: 0 14px 34px rgba(38, 33, 48, 0.10);
+      --critical-bg: #fff1f0;
+      --high-bg: #fff4e6;
+      --medium-bg: #fff9db;
     }
 
     * {
@@ -28,25 +34,58 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      background: radial-gradient(circle at top right, #efe9ff 0, transparent 34%), var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
 
     header {
-      background: linear-gradient(135deg, #123c69 0%, #0f766e 100%);
-      color: #ffffff;
-      padding: 56px 20px 48px;
+      position: relative;
+      background: linear-gradient(135deg, #ffffff 0%, #f4f1fb 48%, #dfd6ff 100%);
+      color: var(--text);
+      padding: 96px 20px 54px;
       text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar {
+      position: absolute;
+      top: 18px;
+      left: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .attus-logo {
+      width: min(240px, 52vw);
+      height: auto;
+      display: block;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 10px 14px;
+      box-shadow: 0 10px 28px rgba(35, 33, 41, 0.08);
+    }
+
+    .candidate-name {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 700;
+      text-align: right;
     }
 
     header .badge {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.16);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: var(--purple-soft);
+      border: 1px solid #d8cdfd;
+      color: var(--accent-dark);
       padding: 8px 14px;
       border-radius: 999px;
       font-size: 14px;
+      font-weight: 700;
       margin-bottom: 18px;
     }
 
@@ -54,13 +93,14 @@
       font-size: clamp(30px, 5vw, 48px);
       line-height: 1.15;
       margin-bottom: 16px;
+      color: #1f1b28;
     }
 
     header p {
       max-width: 880px;
       margin: 0 auto;
       font-size: 18px;
-      opacity: 0.95;
+      color: var(--muted);
     }
 
     .container {
@@ -85,7 +125,7 @@
     }
 
     .metric {
-      background: #f9fafb;
+      background: #fbfaff;
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 18px;
@@ -94,7 +134,7 @@
     .metric strong {
       display: block;
       font-size: 22px;
-      color: var(--primary);
+      color: var(--accent-dark);
       margin-bottom: 4px;
     }
 
@@ -111,28 +151,29 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(246, 248, 251, 0.92);
+      background: rgba(247, 246, 251, 0.92);
       backdrop-filter: blur(10px);
       padding: 14px 0;
     }
 
     .tab-button {
       border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
+      background: #ffffff;
+      color: var(--primary);
       padding: 12px 18px;
       border-radius: 999px;
       cursor: pointer;
       font-weight: 700;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+      box-shadow: 0 4px 14px rgba(35, 33, 41, 0.05);
     }
 
     .tab-button:hover,
     .tab-button.active {
-      background: var(--primary);
+      background: var(--accent);
       color: #ffffff;
-      border-color: var(--primary);
+      border-color: var(--accent);
+      box-shadow: 0 10px 24px rgba(124, 92, 255, 0.22);
     }
 
     .tab-content {
@@ -208,6 +249,128 @@
       border-bottom: none;
     }
 
+    .risk-critical td { background: var(--critical-bg); }
+    .risk-high td { background: var(--high-bg); }
+    
+
+    .risk-matrix-layout {
+      display: grid;
+      grid-template-columns: 1.45fr 0.9fr;
+      gap: 22px;
+      align-items: start;
+      margin: 16px 0 24px;
+    }
+
+    .risk-matrix-layout table {
+      margin: 0;
+    }
+
+    .heatmap-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(35, 33, 41, 0.06);
+    }
+
+    .heatmap-title {
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: 52px repeat(3, 1fr);
+      grid-template-rows: repeat(4, 58px);
+      gap: 6px;
+      align-items: stretch;
+    }
+
+    .heatmap-axis {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .heatmap-cell {
+      border-radius: 12px;
+      border: 1px solid rgba(35, 33, 41, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #231f20;
+      min-height: 52px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .heatmap-cell:hover {
+      transform: scale(1.04);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+    }
+
+    .heat-low { background: #e9f7ef; }
+    .heat-medium { background: var(--medium-bg); }
+    .heat-high { background: var(--high-bg); }
+    .heat-critical { background: var(--critical-bg); }
+    .heat-showstopper { background: #b42318; color: #ffffff; box-shadow: 0 8px 20px rgba(180, 35, 24, 0.24); }
+
+    .risk-token {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(35, 33, 41, 0.12);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .heat-showstopper .risk-token {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.35);
+      color: #ffffff;
+    }
+
+    .heatmap-legend {
+      margin-top: 14px;
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+    }
+
+    .legend-showstopper { background: #b42318; }
+    .legend-critical { background: #ffb4ab; }
+    .legend-high { background: #ffe1bd; }
+    .legend-medium { background: #fff6bf; }
+    .legend-low { background: #e9f7ef; }
+
     .pill {
       display: inline-block;
       padding: 5px 10px;
@@ -217,10 +380,10 @@
       white-space: nowrap;
     }
 
-    .critical { background: #fee2e2; color: var(--danger); }
-    .high { background: #ffedd5; color: var(--warning); }
-    .medium { background: #fef3c7; color: #92400e; }
-    .low { background: #dcfce7; color: var(--success); }
+    .critical { background: #ffe4e2; color: var(--danger); }
+    .high { background: #ffead1; color: var(--warning); }
+    .medium { background: #fff3bf; color: var(--moderate); }
+    .low { background: #eeeeee; color: #374151; }
 
     .grid-2 {
       display: grid;
@@ -229,7 +392,7 @@
     }
 
     .box {
-      background: #f9fafb;
+      background: #fbfaff;
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 20px;
@@ -246,17 +409,17 @@
 
     .quote {
       border-left: 5px solid var(--accent);
-      background: #ecfdf5;
+      background: #f1edff;
       padding: 18px 20px;
       border-radius: 12px;
       margin: 22px 0;
-      color: #064e3b;
+      color: #3b2d73;
       font-weight: 700;
     }
 
     .decision-card {
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
+      background: #f8f5ff;
+      border: 1px solid #d8cdfd;
       border-radius: 18px;
       padding: 20px;
       margin-top: 18px;
@@ -269,9 +432,27 @@
       margin-top: 30px;
     }
 
-    @media (max-width: 820px) {
-      .summary-grid,
-      .grid-2 {
+
+    .d0-panel {
+      background: linear-gradient(135deg, #ffffff 0%, #f7f3ff 58%, #efe8ff 100%);
+      border: 1px solid #d8cdfd;
+      border-radius: 22px;
+      padding: 24px;
+      margin-top: 28px;
+      box-shadow: 0 14px 30px rgba(124, 92, 255, 0.12);
+    }
+    .d0-title { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+    .d0-badge { display: inline-flex; background: var(--accent); color: #fff; border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 800; white-space: nowrap; }
+    .workflow-box { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 18px; margin: 22px 0; }
+    .workflow-steps { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 12px; }
+    .workflow-step { background: #f1eef8; color: var(--primary); border: 1px solid #d8cdfd; border-radius: 999px; padding: 10px 14px; font-weight: 800; font-size: 14px; }
+    .workflow-arrow { color: var(--accent-dark); font-weight: 900; font-size: 18px; }
+    .insight-executivo { background: #2f2938; color: #fff; border-radius: 18px; padding: 20px; margin-top: 18px; box-shadow: 0 12px 28px rgba(47, 41, 56, 0.20); }
+    .insight-executivo strong { color: #dfd6ff; }
+
+    
+
+      .risk-matrix-layout {
         grid-template-columns: 1fr;
       }
 
@@ -285,11 +466,146 @@
         padding: 12px;
       }
     }
+
+
+    /* Destaques visuais específicos da Tarefa 3 */
+    .tarefa3-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tarefa3-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 7px;
+      background: linear-gradient(90deg, var(--accent), #9f7aea, #d8cdfd);
+    }
+
+    .tarefa3-card > h2 {
+      margin-top: 8px;
+    }
+
+    .executive-table tbody tr:nth-child(odd) td {
+      background: #fbfaff;
+    }
+
+    .executive-table tbody tr:hover td,
+    .revenue-table tbody tr:hover td {
+      background: #f4f1ff;
+    }
+
+    .block-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(124, 92, 255, 0.22);
+    }
+
+    .theme-highlight {
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .quote.executive-highlight {
+      border-left: none;
+      border: 1px solid #d8cdfd;
+      background: linear-gradient(135deg, #f5f1ff 0%, #ffffff 100%);
+      color: #2f255f;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      box-shadow: 0 12px 26px rgba(124, 92, 255, 0.10);
+    }
+
+    .quote.executive-highlight::before {
+      content: "💡";
+      flex: 0 0 auto;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 18px rgba(124, 92, 255, 0.22);
+    }
+
+    .t3-box {
+      background: linear-gradient(180deg, #ffffff 0%, #fbfaff 100%);
+      border-top: 4px solid var(--accent);
+      box-shadow: 0 10px 24px rgba(35, 33, 41, 0.06);
+    }
+
+    .t3-box h4 {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .t3-box li::marker {
+      color: var(--accent-dark);
+    }
+
+    .revenue-table tbody tr:nth-child(1) td { background: #f0fdf4; }
+    .revenue-table tbody tr:nth-child(2) td { background: #fff9db; }
+    .revenue-table tbody tr:nth-child(3) td { background: #fff4e6; }
+    .revenue-table tbody tr:nth-child(4) td { background: #f1edff; }
+
+    .revenue-category {
+      font-weight: 900;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .decision-card.t3-decisions {
+      background: linear-gradient(135deg, #f8f5ff 0%, #ffffff 100%);
+      border: 1px solid #d8cdfd;
+      box-shadow: 0 12px 26px rgba(124, 92, 255, 0.10);
+    }
+
+    .decision-card.t3-decisions h3 {
+      margin-top: 0;
+    }
+
+    .decision-card.t3-decisions li {
+      padding: 8px 10px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .final-forward {
+      background: linear-gradient(135deg, #ffffff 0%, #f1edff 100%);
+      border: 1px solid #d8cdfd;
+      border-left: 6px solid var(--accent);
+      border-radius: 18px;
+      padding: 20px;
+      color: var(--primary);
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(35, 33, 41, 0.06);
+    }
+
   </style>
 </head>
 <body>
   <header>
-    <div style="position:absolute;top:16px;left:50%;transform:translateX(-50%);font-size:14px;opacity:0.85;">Deise Simon | Teste Prático — Analista de Projetos Sênior</div>
+    <div class="topbar">
+      <img class="attus-logo" src="logo.png" alt="Attus Procuradoria Digital" />
+      <div class="candidate-name">Deise Simon | Teste Prático — Analista de Projetos Sênior<br>
+      <a href="https://www.linkedin.com/in/deisesimongroehs/" target="_blank" style="color:#7c5cff; text-decoration:none; font-weight:600;">
+        Acesse perfil linkedin
+      </a></div>
+    </div>
     <div class="badge">Teste Prático | Analista de Projetos Sênior</div>
     <h1>Gestão de Portfólio, Riscos e Recuperação de Projetos</h1>
     <p>Plano executivo para priorização, recuperação de implantação estadual e previsibilidade de receita em cenário de escassez de recursos, crise operacional e pressão comercial.</p>
@@ -297,20 +613,20 @@
 
   <main class="container">
     <div class="summary-card">
-      <h2>Visão Executiva</h2>
-      <p class="lead">A abordagem proposta equilibra continuidade operacional, previsibilidade de receita e governança de entregas, com foco em decisões baseadas em impacto, valor de negócio, rastreabilidade e redução de riscos.</p>
+      <h2>Problema Diagnosticado</h2>
+      <p class="lead">Cenário: Você é o responsável por um portfólio de 3 grandes implantações estaduais. No momento, há uma escassez de recursos na equipe de desenvolvimento. Além disso, o suporte reportou um bug crítico em produção que afeta todos os clientes, enquanto o comercial pressiona pela entrega de uma nova funcionalidade para o fechamento de um novo contrato.</p>
       <div class="summary-grid">
         <div class="metric">
           <strong>3</strong>
           <span>Implantações estaduais em portfólio</span>
         </div>
         <div class="metric">
-          <strong>R$ 200k</strong>
-          <span>Faturamento travado por ausência de evidências</span>
+          <strong>Bug crítico</strong>
+          <span>Afetando todos os clientes em produção</span>
         </div>
         <div class="metric">
-          <strong>20%</strong>
-          <span>Atraso no projeto assumido em crise</span>
+          <strong>Alta pressão</strong>
+          <span>Conflito entre operação, entrega e comercial</span>
         </div>
       </div>
     </div>
@@ -324,243 +640,239 @@
     <div id="tarefa1" class="tab-content active">
       <section class="card">
         <h2>Tarefa 1 — Gestão de Riscos e Priorização</h2>
-        <p class="lead">Cenário: portfólio com três grandes implantações estaduais, escassez de recursos técnicos, bug crítico em produção afetando todos os clientes e pressão comercial por nova funcionalidade.</p>
+
+        <h3>Resumo Executivo da Decisão</h3>
+        <div class="decision-card">
+          <p><strong>Decisão recomendada:</strong> priorizar imediatamente a correção do bug crítico em produção, com realocação temporária de capacidade técnica e congelamento controlado de demandas não críticas até estabilização do ambiente.</p>
+          <p><strong>Justificativa:</strong> o bug afeta todos os clientes, compromete a continuidade operacional, aumenta risco reputacional e pode gerar impacto direto em contratos, suporte, satisfação e retenção.</p>
+        </div>
 
         <h3>Matriz de Riscos — Probabilidade x Impacto</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Risco</th>
-              <th>Probabilidade</th>
-              <th>Impacto</th>
-              <th>Classificação</th>
-              <th>Resposta Recomendada</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Bug crítico em produção afetando todos os clientes</td>
-              <td>Alta</td>
-              <td>Alto</td>
-              <td><span class="pill critical">Crítico</span></td>
-              <td>Ação imediata de contenção, priorização técnica, comunicação executiva, plano de correção e validação pós-produção.</td>
-            </tr>
-            <tr>
-              <td>Escassez de recursos na equipe de desenvolvimento</td>
-              <td>Alta</td>
-              <td>Alto</td>
-              <td><span class="pill critical">Crítico</span></td>
-              <td>Rebalanceamento de capacidade, congelamento temporário de baixa prioridade, definição de fila única e escalonamento para decisão executiva.</td>
-            </tr>
-            <tr>
-              <td>Atraso nas três implantações estaduais</td>
-              <td>Média</td>
-              <td>Alto</td>
-              <td><span class="pill high">Alto</span></td>
-              <td>Replanejamento por marcos, revisão de dependências críticas, comunicação com stakeholders e atualização de cronograma executivo.</td>
-            </tr>
-            <tr>
-              <td>Pressão comercial por nova funcionalidade</td>
-              <td>Alta</td>
-              <td>Médio/Alto</td>
-              <td><span class="pill high">Alto</span></td>
-              <td>Avaliação de valor vs. risco, análise de capacidade, definição de MVP ou alternativa comercial sem comprometer estabilidade operacional.</td>
-            </tr>
-            <tr>
-              <td>Perda de confiança dos clientes por instabilidade e atrasos</td>
-              <td>Média</td>
-              <td>Alto</td>
-              <td><span class="pill high">Alto</span></td>
-              <td>Plano de comunicação formal, status report recorrente, evidências de evolução e atuação ativa em gestão de expectativas.</td>
-            </tr>
-            <tr>
-              <td>Sobrecarga do time técnico e aumento de retrabalho</td>
-              <td>Alta</td>
-              <td>Médio</td>
-              <td><span class="pill medium">Moderado</span></td>
-              <td>Limitação de WIP, revisão de prioridades, gestão de dependências e proteção do foco técnico.</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="risk-matrix-layout">
+          <table>
+            <thead>
+              <tr>
+                <th>Risco</th>
+                <th>Probabilidade (Base de Evidência)</th>
+                <th>Impacto</th>
+                <th>Classificação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="risk-critical">
+                <td><strong>R1</strong> — Bug crítico em produção afetando todos os clientes</td>
+                <td>Alta (Já materializado em produção)</td>
+                <td>Alto</td>
+                <td><span class="pill critical">Crítico</span></td>
+              </tr>
+              <tr class="risk-critical">
+                <td><strong>R2</strong> — Escassez de recursos na equipe de desenvolvimento</td>
+                <td>Alta (Capacidade atual insuficiente)</td>
+                <td>Alto</td>
+                <td><span class="pill critical">Crítico</span></td>
+              </tr>
+              <tr class="risk-high">
+                <td><strong>R3</strong> — Atraso nas três implantações estaduais</td>
+                <td>Média (Dependências e backlog acumulado)</td>
+                <td>Alto</td>
+                <td><span class="pill high">Alto</span></td>
+              </tr>
+              <tr class="risk-high">
+                <td><strong>R4</strong> — Pressão comercial por nova funcionalidade</td>
+                <td>Alta (Demanda ativa do comercial)</td>
+                <td>Médio/Alto</td>
+                <td><span class="pill high">Alto</span></td>
+              </tr>
+              <tr class="risk-high">
+                <td><strong>R5</strong> — Perda de confiança dos clientes por instabilidade e atrasos</td>
+                <td>Média (Impacto progressivo percebido)</td>
+                <td>Alto</td>
+                <td><span class="pill high">Alto</span></td>
+              </tr>
+              <tr class="risk-medium">
+                <td><strong>R6</strong> — Sobrecarga do time técnico e aumento de retrabalho</td>
+                <td>Alta (Sobrecarga já observada na operação, com evidências de aumento de retrabalho e filas técnicas)</td>
+                <td>Médio</td>
+                <td><span class="pill medium">Moderado</span></td>
+              </tr>
+            </tbody>
+          </table>
 
-        <h3>Priorização Técnica e Executiva</h3>
+          <aside class="heatmap-card" aria-label="Gráfico de matriz de calor de riscos">
+            <div class="heatmap-title">Matriz de Calor dos Riscos (Visão Executiva)</div>
+            <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Probabilidade (horizontal) x Impacto (vertical)</div>
+            <div class="heatmap-grid" style="border-top:1px solid var(--border);padding-top:6px;">
+              <div></div>
+              <div class="heatmap-axis">Baixa</div>
+              <div class="heatmap-axis">Média</div>
+              <div class="heatmap-axis">Alta</div>
+
+              <div class="heatmap-axis">Alto<br>Impacto</div>
+              <div class="heatmap-cell heat-medium"><span>Moderado</span></div>
+              <div class="heatmap-cell heat-high"><span>Alto</span><span class="risk-token">R3</span><span class="risk-token">R5</span></div>
+              <div class="heatmap-cell heat-showstopper" title="Zona crítica — atuação imediata"><span>Crítico</span><span class="risk-token">R1</span><span class="risk-token">R2</span></div>
+
+              <div class="heatmap-axis">Médio<br>Impacto</div>
+              <div class="heatmap-cell heat-low"><span>Baixo</span></div>
+              <div class="heatmap-cell heat-medium"><span>Moderado</span></div>
+              <div class="heatmap-cell heat-high"><span>Alto</span><span class="risk-token">R4</span><span class="risk-token">R6</span></div>
+
+              <div class="heatmap-axis">Baixo<br>Impacto</div>
+              <div class="heatmap-cell heat-low"><span>Baixo</span></div>
+              <div class="heatmap-cell heat-low"><span>Baixo</span></div>
+              <div class="heatmap-cell heat-medium"><span>Moderado</span></div>
+            </div>
+            <div class="heatmap-legend" style="border-top:1px solid var(--border);padding-top:10px;">
+              <div class="legend-item"><span class="legend-dot legend-showstopper"></span><strong>R1</strong> Bug crítico em produção (já materializado) — ação imediata</div>
+              <div class="legend-item"><span class="legend-dot legend-showstopper"></span><strong>R2</strong> Escassez de recursos (capacidade insuficiente)</div>
+              <div class="legend-item"><span class="legend-dot legend-high"></span><strong>R3</strong> Atraso nas implantações estaduais</div>
+              <div class="legend-item"><span class="legend-dot legend-high"></span><strong>R4</strong> Nova funcionalidade comercial</div>
+              <div class="legend-item"><span class="legend-dot legend-high"></span><strong>R5</strong> Perda de confiança dos clientes</div>
+              <div class="legend-item"><span class="legend-dot legend-high"></span><strong>R6</strong> Sobrecarga técnica (retrabalho crescente)</div>
+            </div>
+          </aside>
+        </div>
+
+        <h3>Leitura Executiva da Matriz</h3>
         <div class="grid-2">
           <div class="box">
-            <h4>Prioridade Máxima: Bug crítico em produção</h4>
-            <p>A frente de trabalho que deve receber prioridade máxima é a estabilização do ambiente produtivo, pois o bug crítico afeta todos os clientes e gera impacto operacional sistêmico.</p>
-            <ul>
-              <li>Afeta a base atual de clientes.</li>
-              <li>Eleva risco reputacional, contratual e de churn.</li>
-              <li>Compromete confiança institucional e percepção de qualidade.</li>
-              <li>Pode gerar aumento de chamados e sobrecarga do suporte.</li>
-            </ul>
+            <h4>Showstopper</h4>
+            <p>O bug crítico em produção fica na zona de maior severidade porque afeta todos os clientes e compromete a continuidade do serviço. Por isso, deve atropelar temporariamente demandas de crescimento.</p>
           </div>
           <div class="box">
-            <h4>Critérios de Decisão</h4>
-            <ul>
-              <li><strong>Impacto operacional:</strong> continuidade do serviço e estabilidade em produção.</li>
-              <li><strong>Valor de negócio protegido:</strong> manutenção da receita recorrente e retenção de clientes.</li>
-              <li><strong>Risco institucional:</strong> preservação da confiança, compliance e relacionamento com clientes públicos.</li>
-              <li><strong>Custo de não agir:</strong> crescimento de retrabalho, incidentes e bloqueios nas implantações.</li>
-            </ul>
+            <h4>Urgente x Importante</h4>
+            <p>O bug é urgente e operacional. As implantações e a nova funcionalidade são importantes, mas devem ser replanejadas para não ampliar instabilidade, retrabalho ou risco contratual.</p>
           </div>
         </div>
 
-        <div class="quote">A estabilização da produção é condição obrigatória para proteger a operação atual, preservar receita e evitar que novas entregas ampliem riscos já existentes.</div>
+        
 
-        <h3>Ordem Recomendada de Atuação</h3>
-        <ol>
-          <li><strong>Correção do bug crítico em produção:</strong> contenção, análise de causa raiz, correção, testes e comunicação.</li>
-          <li><strong>Rebalanceamento de capacidade técnica:</strong> priorização formal, limitação de WIP e proteção de recursos críticos.</li>
-          <li><strong>Replanejamento das implantações estaduais:</strong> revisão de marcos, dependências, riscos e comunicação com clientes.</li>
-          <li><strong>Nova funcionalidade comercial:</strong> avaliar MVP, trade-offs e decisão executiva somente após estabilização operacional.</li>
-        </ol>
+        <div class="quote">A decisão executiva recomendada é estabilizar primeiro, replanejar em seguida e só então avançar em expansão comercial. Crescimento sem estabilidade aumenta risco, retrabalho e perda de confiança.</div>
+      
+
       </section>
     </div>
 
     <div id="tarefa2" class="tab-content">
       <section class="card">
         <h2>Tarefa 2 — Recuperação de Projeto e Engenharia de Processo</h2>
-        <p class="lead">Cenário: implantação estadual com 20% de atraso, cliente insatisfeito e R$ 200k de faturamento travado há dois meses por falta de evidências na ferramenta de gestão.</p>
+        <p class="lead">Cenário: projeto com atraso, cliente insatisfeito e faturamento bloqueado por falha de evidência e governança.</p>
 
-        <h3>Plano de Recuperação — Ações Técnicas Imediatas</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Frente</th>
-              <th>Ação</th>
-              <th>Objetivo</th>
-              <th>Resultado Esperado</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Diagnóstico executivo</td>
-              <td>Revisar cronograma planejado vs. realizado, status das entregas, pendências, dependências e bloqueios.</td>
-              <td>Identificar a causa real do atraso e separar atraso técnico de falha de formalização.</td>
-              <td>Visão clara do projeto e priorização dos pontos críticos.</td>
-            </tr>
-            <tr>
-              <td>Limpeza do cronograma</td>
-              <td>Remover tarefas obsoletas, atualizar baseline, reorganizar o plano por marcos, entregáveis e dependências.</td>
-              <td>Transformar o cronograma em instrumento gerencial confiável.</td>
-              <td>Plano realista, rastreável e comunicável ao cliente.</td>
-            </tr>
-            <tr>
-              <td>Evidências de entrega</td>
-              <td>Auditar entregas já realizadas, vincular evidências, registrar aceite e corrigir lacunas documentais.</td>
-              <td>Destravar faturamento e reduzir risco de glosa ou contestação.</td>
-              <td>Base formal para faturamento dos R$ 200k travados.</td>
-            </tr>
-            <tr>
-              <td>Gestão de confiança</td>
-              <td>Realizar reunião executiva com cliente apresentando diagnóstico, plano de recuperação, responsáveis e novos marcos.</td>
-              <td>Recuperar previsibilidade e transparência.</td>
-              <td>Cliente alinhado e acompanhamento formal retomado.</td>
-            </tr>
-            <tr>
-              <td>Governança recorrente</td>
-              <td>Implantar status report semanal, ata executiva, plano de ação, log de riscos e registro de decisões.</td>
-              <td>Evitar reincidência de falhas de comunicação e evidência.</td>
-              <td>Rastreabilidade e controle gerencial do projeto.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Sequência de Recuperação Recomendada</h3>
-        <div class="grid-2">
-          <div class="box">
-            <h4>Primeiras ações</h4>
-            <ol>
-              <li>Congelar uma foto real do projeto: escopo, status, riscos, entregas e pendências.</li>
-              <li>Separar entregas concluídas, em andamento, bloqueadas e não iniciadas.</li>
-              <li>Validar quais entregas possuem critério de aceite e evidência formal.</li>
-              <li>Atualizar cronograma por marcos, e não por microtarefas operacionais.</li>
-            </ol>
+        <h3>Plano de Recuperação (Recovery Schedule)</h3>
+        <div style="display:grid;gap:16px;margin-top:16px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:80px;font-weight:bold;">Semana 1</div>
+            <div style="flex:1;background:#ffe4e2;padding:12px;border-radius:10px;">Diagnóstico + Limpeza do cronograma (Ajuste do cronograma)</div>
           </div>
-          <div class="box">
-            <h4>Retomada da confiança</h4>
-            <ol>
-              <li>Apresentar diagnóstico sem transferir responsabilidade.</li>
-              <li>Definir plano de recuperação com datas, responsáveis e dependências.</li>
-              <li>Formalizar decisões em ata executiva.</li>
-              <li>Manter cadência de status report até estabilização do projeto.</li>
-            </ol>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:80px;font-weight:bold;">Semana 2</div>
+            <div style="flex:1;background:#fff3bf;padding:12px;border-radius:10px;">Repriorização do caminho crítico + evidências de entrega</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:80px;font-weight:bold;">Semana 3</div>
+            <div style="flex:1;background:#dbeafe;padding:12px;border-radius:10px;">Absorção do atraso (20%) focando marcos críticos</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:80px;font-weight:bold;">Semana 4</div>
+            <div style="flex:1;background:#dcfce7;padding:12px;border-radius:10px;">Retomada do fluxo normal + validação com cliente</div>
           </div>
         </div>
 
-        <div class="quote">Entrega sem evidência formal não garante aceite, não sustenta faturamento e reduz a previsibilidade gerencial do portfólio.</div>
+        <div class="quote">O ajuste do cronograma transforma um plano irreal em um plano executável, focado no caminho crítico e nos marcos de maior valor para o cliente.</div>
 
-        <h3>Otimização da Ferramenta de Gestão</h3>
-        <p>Para garantir faturamento em D+0 da entrega, a ferramenta deve operar com estrutura orientada a marcos faturáveis, critérios de aceite e evidências obrigatórias.</p>
+        <h3>Ajuste do Cronograma</h3>
+        <ul>
+          <li>Remoção de tarefas sem valor ou redundantes</li>
+          <li>Foco no caminho crítico</li>
+          <li>Priorização de marcos com maior impacto político/operacional</li>
+          <li>Definição clara de datas realistas</li>
+        </ul>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Campo/Componente</th>
-              <th>Obrigatoriedade</th>
-              <th>Finalidade</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Marco de faturamento</td>
-              <td>Obrigatório</td>
-              <td>Identificar entregas que liberam cobrança contratual.</td>
-            </tr>
-            <tr>
-              <td>Critério de aceite</td>
-              <td>Obrigatório</td>
-              <td>Definir objetivamente quando a entrega pode ser considerada concluída.</td>
-            </tr>
-            <tr>
-              <td>Evidência de entrega</td>
-              <td>Obrigatório</td>
-              <td>Anexar print, link, ata, homologação, termo de aceite ou registro funcional.</td>
-            </tr>
-            <tr>
-              <td>Responsável técnico</td>
-              <td>Obrigatório</td>
-              <td>Garantir ownership da execução.</td>
-            </tr>
-            <tr>
-              <td>Responsável pelo aceite</td>
-              <td>Obrigatório</td>
-              <td>Definir quem valida a entrega pelo cliente ou área de negócio.</td>
-            </tr>
-            <tr>
-              <td>Status financeiro</td>
-              <td>Obrigatório</td>
-              <td>Controlar se a entrega está: prevista, entregue, aceita, faturada ou bloqueada.</td>
-            </tr>
-            <tr>
-              <td>Data prevista e data real</td>
-              <td>Obrigatório</td>
-              <td>Monitorar previsibilidade, atraso e impacto no trimestre.</td>
-            </tr>
-          </tbody>
-        </table>
+        <h3>Dashboards de Transparência</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;">
+          <div style="background:#f1f5ff;padding:16px;border-radius:12px;">
+            <strong>Status em tempo real</strong>
+            <p style="font-size:14px;">Progresso das entregas atualizado continuamente</p>
+          </div>
+          <div style="background:#f1f5ff;padding:16px;border-radius:12px;">
+            <strong>Marcos de faturamento</strong>
+            <p style="font-size:14px;">Visibilidade dos pontos que liberam receita</p>
+          </div>
+          <div style="background:#f1f5ff;padding:16px;border-radius:12px;">
+            <strong>Riscos e bloqueios</strong>
+            <p style="font-size:14px;">Identificação rápida de impedimentos</p>
+          </div>
+        </div>
 
-        <h3>Fluxo para Faturamento em D+0</h3>
-        <ol>
-          <li>Entrega técnica concluída.</li>
-          <li>Evidência obrigatória anexada na ferramenta.</li>
-          <li>Critério de aceite conferido pelo gestor do projeto.</li>
-          <li>Cliente ou responsável interno valida o aceite.</li>
-          <li>Status alterado para “Liberado para faturamento”.</li>
-          <li>Notificação automática para financeiro/comercial.</li>
-          <li>Faturamento realizado em D+0.</li>
-        </ol>
+        <div class="quote">A transparência reduz ruído, aumenta confiança e elimina a assimetria de informação entre cliente e operação.</div>
+
+        <div class="d0-panel">
+          <div class="d0-title">
+            <h3 style="margin:0;">Otimização da Ferramenta: Estrutura de Monitoramento D+0</h3>
+            <span class="d0-badge">Faturamento imediato</span>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Recurso</th>
+                <th>Configuração Técnica</th>
+                <th>Impacto no Faturamento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Campos Obrigatórios</strong></td>
+                <td>Bloqueio de transição para "Done" sem anexo de "Evidência de Entrega" (ex: PDF de aceite).</td>
+                <td>Garante que a tarefa só termine com o lastro para cobrança.</td>
+              </tr>
+              <tr>
+                <td><strong>Etiqueta (Tag) de Milestone</strong></td>
+                <td>Criar a tag #Faturamento em tarefas que são marcos contratuais.</td>
+                <td>Filtro imediato para o financeiro saber o que pode ser faturado no dia.</td>
+              </tr>
+              <tr>
+                <td><strong>Gatilho de Automação</strong></td>
+                <td>Automação que envia e-mail/notificação ao Financeiro assim que o status mudar para "Homologado pelo Cliente".</td>
+                <td>Reduz o tempo de faturamento de meses para minutos (D+0).</td>
+              </tr>
+              <tr>
+                <td><strong>Checklist de Definição de Feito (DoD)</strong></td>
+                <td>Incluir o item: "Artefatos de cobrança carregados na ferramenta".</td>
+                <td>Padroniza a qualidade da entrega técnica com foco em compliance.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="workflow-box">
+            <h4 style="margin-top:0;">Fluxo de Trabalho (Workflow) Blindado</h4>
+            <div class="workflow-steps">
+              <span class="workflow-step">Em Desenvolvimento</span>
+              <span class="workflow-arrow">→</span>
+              <span class="workflow-step">QA/Testes</span>
+              <span class="workflow-arrow">→</span>
+              <span class="workflow-step">Homologação Cliente<br><small>Anexo de Evidência Obrigatório</small></span>
+              <span class="workflow-arrow">→</span>
+              <span class="workflow-step">Pronto para Faturamento<br><small>Gatilho D+0</small></span>
+            </div>
+          </div>
+
+          <div class="insight-executivo">
+            <p><strong>Insight Executivo:</strong> O erro deste projeto não foi técnico, foi de governança. Ao vincular tecnicamente a conclusão da tarefa ao upload da evidência, você remove o fator humano do esquecimento e garante o fluxo de caixa da empresa.</p>
+          </div>
+        </div>
+
       </section>
+    </div>
     </div>
 
     <div id="tarefa3" class="tab-content">
-      <section class="card">
+      <section class="card tarefa3-card">
         <h2>Tarefa 3 — Gestão de Crise e Comunicação Estratégica</h2>
         <p class="lead">Pauta executiva para apresentação à Diretoria sobre previsibilidade de receita do portfólio, gargalos operacionais que impedem faturamento e solução técnica proposta.</p>
 
         <h3>Pauta da Reunião com a Diretoria</h3>
-        <table>
+        <table class="executive-table">
           <thead>
             <tr>
               <th>Bloco</th>
@@ -570,44 +882,44 @@
           </thead>
           <tbody>
             <tr>
-              <td>1</td>
-              <td>Contexto do portfólio</td>
+              <td><span class="block-number">1</span></td>
+              <td><span class="theme-highlight">Contexto do portfólio</span></td>
               <td>Apresentar status das três implantações estaduais, saúde dos projetos e principais riscos.</td>
             </tr>
             <tr>
-              <td>2</td>
-              <td>Previsibilidade de receita do trimestre</td>
+              <td><span class="block-number">2</span></td>
+              <td><span class="theme-highlight">Previsibilidade de receita do trimestre</span></td>
               <td>Separar receita prevista, receita em risco, receita bloqueada e receita recuperável.</td>
             </tr>
             <tr>
-              <td>3</td>
-              <td>Gargalos operacionais</td>
+              <td><span class="block-number">3</span></td>
+              <td><span class="theme-highlight">Gargalos operacionais</span></td>
               <td>Demonstrar onde a operação está impedindo o faturamento: escassez técnica, ausência de evidências, atrasos e bug crítico.</td>
             </tr>
             <tr>
-              <td>4</td>
-              <td>Impactos para o negócio</td>
+              <td><span class="block-number">4</span></td>
+              <td><span class="theme-highlight">Impactos para o negócio</span></td>
               <td>Relacionar gargalos com risco de receita, satisfação do cliente, reputação e cumprimento contratual.</td>
             </tr>
             <tr>
-              <td>5</td>
-              <td>Solução técnica e gerencial</td>
+              <td><span class="block-number">5</span></td>
+              <td><span class="theme-highlight">Solução técnica e gerencial</span></td>
               <td>Apresentar plano de estabilização, governança de marcos faturáveis e recuperação dos projetos.</td>
             </tr>
             <tr>
-              <td>6</td>
-              <td>Decisões necessárias</td>
+              <td><span class="block-number">6</span></td>
+              <td><span class="theme-highlight">Decisões necessárias</span></td>
               <td>Solicitar priorização de recursos, validação de trade-offs e aprovação de medidas de mitigação.</td>
             </tr>
           </tbody>
         </table>
 
         <h3>Mensagem Executiva Recomendada</h3>
-        <div class="quote">A previsibilidade de receita do portfólio está diretamente condicionada à estabilização da produção, à recuperação de marcos atrasados e à implantação de uma governança de evidências que permita faturamento imediato após aceite.</div>
+        <div class="quote executive-highlight">A receita só volta a ser previsível quando três pontos estiverem resolvidos: sistema estável, entregas atrasadas recuperadas e evidências organizadas para permitir faturamento imediato após o aceite.</div>
 
         <h3>Diagnóstico dos Gargalos</h3>
         <div class="grid-2">
-          <div class="box">
+          <div class="box t3-box">
             <h4>Gargalos operacionais</h4>
             <ul>
               <li>Capacidade técnica insuficiente para atender simultaneamente sustentação, implantações e novas demandas comerciais.</li>
@@ -617,7 +929,7 @@
               <li>Projetos com baixa visibilidade de dependências, riscos e decisões pendentes.</li>
             </ul>
           </div>
-          <div class="box">
+          <div class="box t3-box">
             <h4>Solução proposta</h4>
             <ul>
               <li>Estabelecer fila única de prioridades do portfólio.</li>
@@ -630,7 +942,7 @@
         </div>
 
         <h3>Modelo de Visão Executiva para Receita</h3>
-        <table>
+        <table class="revenue-table">
           <thead>
             <tr>
               <th>Categoria</th>
@@ -640,29 +952,29 @@
           </thead>
           <tbody>
             <tr>
-              <td>Receita prevista</td>
+              <td><span class="revenue-category">Receita prevista</span></td>
               <td>Marcos planejados para o trimestre com entrega dentro do prazo.</td>
               <td>Monitorar semanalmente e proteger dependências críticas.</td>
             </tr>
             <tr>
-              <td>Receita em risco</td>
+              <td><span class="revenue-category">Receita em risco</span></td>
               <td>Marcos com atraso, dependência técnica ou pendência de aceite.</td>
               <td>Plano de ação com responsável, prazo e escalonamento.</td>
             </tr>
             <tr>
-              <td>Receita bloqueada</td>
+              <td><span class="revenue-category">Receita bloqueada</span></td>
               <td>Entregas concluídas ou parcialmente concluídas sem evidência/aceite suficiente para faturar.</td>
               <td>Auditoria de evidências, regularização documental e validação com cliente.</td>
             </tr>
             <tr>
-              <td>Receita recuperável</td>
+              <td><span class="revenue-category">Receita recuperável</span></td>
               <td>Valores que podem ser faturados no curto prazo após correção de processo.</td>
               <td>Mutirão de regularização e faturamento D+0 após aceite formal.</td>
             </tr>
           </tbody>
         </table>
 
-        <div class="decision-card">
+        <div class="decision-card t3-decisions">
           <h3>Decisões Solicitadas à Diretoria</h3>
           <ol>
             <li>Autorizar priorização máxima para correção do bug crítico em produção.</li>
@@ -674,7 +986,7 @@
         </div>
 
         <h3>Encaminhamento Final</h3>
-        <p>A solução combina gestão de riscos, governança de portfólio, controle de evidências e comunicação executiva. O foco é recuperar a confiança do cliente, proteger a base atual, destravar faturamento e aumentar a previsibilidade das próximas entregas.</p>
+        <p class="final-forward">O plano é simples: estabilizar o sistema, organizar as entregas e garantir evidência para faturar sem atraso. Com isso, conseguimos recuperar a confiança do cliente, evitar perdas e voltar a ter previsibilidade de receita.</p>
       </section>
     </div>
 
@@ -691,6 +1003,64 @@
 
       document.getElementById(tabId).classList.add('active');
       button.classList.add('active');
+
+      const title = document.querySelector('.summary-card h2');
+      const text = document.querySelector('.summary-card .lead');
+      const grid = document.querySelector('.summary-grid');
+
+      if (tabId === 'tarefa2') {
+        title.innerText = 'Problema Diagnosticado';
+        text.innerText = 'Cenário: Você assume um projeto de implantação estadual que está com 20% de atraso, o cliente está insatisfeito e o faturamento de R$ 200k está travado há dois meses por falta de evidências de entrega na ferramenta de gestão de projetos.';
+        grid.innerHTML = `
+          <div class="metric">
+            <strong>1</strong>
+            <span>Projeto estadual</span>
+          </div>
+          <div class="metric">
+            <strong>R$ 200k</strong>
+            <span>Faturamento travado por ausência de evidências</span>
+          </div>
+          <div class="metric">
+            <strong>20%</strong>
+            <span>Atraso no projeto assumido em crise</span>
+          </div>
+        `;
+      } else if (tabId === 'tarefa3') {
+        title.innerText = 'Visão Executiva';
+        text.innerText = 'Elabore uma pauta de reunião para a Diretoria apresentando a Previsibilidade de Receita do portfólio para o próximo trimestre, justificando onde os gargalos operacionais estão impedindo o faturamento e qual a solução técnica para resolvê-los.';
+        grid.innerHTML = `
+          <div class="metric">
+            <strong>Previsibilidade Financeira</strong>
+            <span>O objetivo estratégico</span>
+          </div>
+          <div class="metric">
+            <strong>Eficiência Operacional</strong>
+            <span>Onde reside o problema/gargalo</span>
+          </div>
+          <div class="metric">
+            <strong>Viabilidade Técnica</strong>
+            <span>A solução para destravar o faturamento</span>
+          </div>
+        `;
+      } else {
+        title.innerText = 'Problema Diagnosticado';
+        text.innerText = 'Cenário: Você é o responsável por um portfólio de 3 grandes implantações estaduais. No momento, há uma escassez de recursos na equipe de desenvolvimento. Além disso, o suporte reportou um bug crítico em produção que afeta todos os clientes, enquanto o comercial pressiona pela entrega de uma nova funcionalidade para o fechamento de um novo contrato.';
+        grid.innerHTML = `
+          <div class="metric">
+            <strong>3</strong>
+            <span>Implantações estaduais em portfólio</span>
+          </div>
+          <div class="metric">
+            <strong>Bug crítico</strong>
+            <span>Afetando todos os clientes em produção</span>
+          </div>
+          <div class="metric">
+            <strong>Alta pressão</strong>
+            <span>Conflito entre operação, entrega e comercial</span>
+          </div>
+        `;
+      }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
