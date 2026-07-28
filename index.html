@@ -41,7 +41,7 @@ button,input,textarea,select{font:inherit}button,a{touch-action:manipulation}a{c
 .header{position:sticky;top:0;z-index:1000;background:rgba(255,250,248,.84);backdrop-filter:blur(18px) saturate(135%);border-bottom:1px solid rgba(91,49,85,.08)}
 .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px;min-width:max-content;border:0;background:none;padding:0;color:inherit;cursor:pointer;text-align:left}.brand-mark{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,var(--gold-soft),var(--rose-soft));border:1px solid rgba(201,154,76,.45);box-shadow:inset 0 0 0 5px rgba(255,255,255,.62)}
 .brand-mark svg{width:28px;height:28px}.brand strong{font-family:var(--serif);font-weight:500;font-size:18px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
-.nav-links{display:flex;align-items:center;gap:22px;font-size:13px}.nav-link{position:relative;padding:10px 2px;color:var(--ink-2);background:none;border:0;cursor:pointer}.nav-link::after{content:"";position:absolute;left:50%;right:50%;bottom:3px;height:2px;background:linear-gradient(90deg,var(--rose),var(--aqua));transition:.25s}.nav-link:hover::after,.nav-link.active::after{left:0;right:0}.nav-link.active{color:var(--rose-deep)}
+.nav-links{display:flex;align-items:center;gap:24px;font-size:15px}.nav-link{position:relative;padding:11px 3px;color:var(--ink-2);background:none;border:0;cursor:pointer}.nav-link::after{content:"";position:absolute;left:50%;right:50%;bottom:3px;height:2px;background:linear-gradient(90deg,var(--rose),var(--aqua));transition:.25s}.nav-link:hover::after,.nav-link.active::after{left:0;right:0}.nav-link.active{color:var(--rose-deep)}.header .nav-link{font-size:15px;font-weight:700;letter-spacing:.01em;color:var(--plum-deep);transition:color .2s ease,background .2s ease}.header .nav-link:hover{color:var(--rose-deep)}.header .nav-link::after{height:3px;border-radius:999px}.header .nav-link.active{color:var(--rose-deep);font-weight:800}
 .menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--plum);align-items:center;justify-content:center;cursor:pointer}.menu-btn svg{width:22px;height:22px}
 /* Buttons */
 .btn{border:0;border-radius:14px;padding:12px 18px;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;font-size:13px;cursor:pointer;transition:transform .25s,box-shadow .25s,filter .25s;background:transparent;white-space:nowrap}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(82,48,73,.14)}.btn:active{transform:translateY(0)}.btn svg{width:17px;height:17px}
@@ -85,9 +85,79 @@ button,input,textarea,select{font:inherit}button,a{touch-action:manipulation}a{c
 /* Reveal */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
 /* Mobile */
-@media(max-width:980px){.role-verbs{grid-template-columns:repeat(4,1fr)}.role-verb:nth-child(4)::after{display:none}.context-panel-head{align-items:flex-start;flex-direction:column;gap:4px}.menu-btn{display:flex}.nav-links{position:fixed;top:78px;right:16px;left:16px;display:none;flex-direction:column;align-items:stretch;background:rgba(255,253,251,.97);border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:var(--shadow)}.nav-links.open{display:flex}.nav-link{text-align:left;padding:12px 8px}.nav-link::after{display:none}.hero-grid,.page-hero-grid,.case-hero-grid{grid-template-columns:1fr}.hero-grid .visual-shell{order:-1;min-height:390px}.visual-shell svg{min-height:390px}.stats{grid-template-columns:repeat(2,1fr)}.home-contact-grid{grid-template-columns:1fr}.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3,.case-grid{grid-template-columns:repeat(2,1fr)}.timeline{grid-template-columns:repeat(2,1fr)}.timeline::before{display:none}.timeline-item{padding-top:0}.timeline-item::before{position:static;margin-bottom:10px}.dashboard{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}.lab-node{width:145px}.case-meta{grid-template-columns:repeat(2,1fr)}.logo-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:980px){.role-verbs{grid-template-columns:repeat(4,1fr)}.role-verb:nth-child(4)::after{display:none}.context-panel-head{align-items:flex-start;flex-direction:column;gap:4px}.menu-btn{display:flex}.nav-links{position:fixed;top:78px;right:16px;left:16px;display:none;flex-direction:column;align-items:stretch;background:rgba(255,253,251,.97);border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:var(--shadow)}.nav-links.open{display:flex}.nav-link{text-align:left;padding:12px 8px}.nav-link::after{display:none}.header .nav-link{font-size:15px;padding:13px 12px;border-radius:12px}.header .nav-link.active{background:var(--rose-soft)}.hero-grid,.page-hero-grid,.case-hero-grid{grid-template-columns:1fr}.hero-grid .visual-shell{order:-1;min-height:390px}.visual-shell svg{min-height:390px}.stats{grid-template-columns:repeat(2,1fr)}.home-contact-grid{grid-template-columns:1fr}.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3,.case-grid{grid-template-columns:repeat(2,1fr)}.timeline{grid-template-columns:repeat(2,1fr)}.timeline::before{display:none}.timeline-item{padding-top:0}.timeline-item::before{position:static;margin-bottom:10px}.dashboard{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}.lab-node{width:145px}.case-meta{grid-template-columns:repeat(2,1fr)}.logo-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:650px){.role-verbs{grid-template-columns:repeat(2,1fr)}.role-verb:nth-child(even)::after{display:none}.context-panel{padding:17px}.context-chip{width:100%;justify-content:flex-start}.positioning-note{font-size:13px}.container{width:min(calc(100% - 26px),var(--max))}.nav{height:70px}.brand small{display:none}.header .btn{display:none}.nav-links{top:70px}.hero{padding-top:48px}.display{font-size:46px}.page-title,.case-title{font-size:43px}.hero-grid .visual-shell{min-height:330px}.visual-shell svg{min-height:330px}.actions .btn{width:100%}.stats{grid-template-columns:1fr 1fr;gap:12px}.stat{display:block;min-height:152px;padding:19px}.stat .feature-icon{width:50px;height:50px;margin-bottom:13px}.stat strong{font-size:32px}.stat span{font-size:12px}.home-contact-grid{grid-template-columns:1fr}.home-contact-card{min-height:104px;padding:18px}.section{padding:56px 0}.section-head{display:block}.section-head>p{margin-top:14px}.grid-2,.grid-3,.grid-4,.case-grid{grid-template-columns:1fr}.band{display:block;padding:24px}.band .btn{width:100%;margin-top:16px}.portrait-card{grid-template-columns:1fr}.portrait-svg{margin:auto}.about-process .process-step{min-width:112px}.timeline{grid-template-columns:1fr}.case-meta{grid-template-columns:1fr 1fr}.metric-grid{grid-template-columns:1fr 1fr}.lab-network{min-height:470px}.lab-core{width:125px;height:125px;font-size:23px}.lab-node{width:128px;padding:9px;font-size:9px}.lab-node:nth-child(2){top:5px;left:0}.lab-node:nth-child(3){top:5px;right:0}.lab-node:nth-child(4){top:170px;left:0}.lab-node:nth-child(5){top:170px;right:0}.lab-node:nth-child(6){bottom:8px;left:0}.lab-node:nth-child(7){bottom:8px;right:0}.lab-network::before{width:310px;height:310px}.lab-network::after{width:220px;height:220px}.form-row{grid-template-columns:1fr}.priority-row{grid-template-columns:1fr 1fr}.priority-row .item-name{grid-column:1/-1}.footer-grid{grid-template-columns:1fr}.footer-grid>div:first-child{grid-column:auto}.footer-column{justify-self:start}.footer-bottom{display:block}.footer-bottom span{display:block;margin-top:7px}.case-thumb{height:170px}.contact-grid{gap:14px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* HOME — encerramento e contatos em destaque */
+.home-contact-wrap{padding:58px 0 92px}
+.home-contact-panel{position:relative;overflow:hidden;padding:clamp(30px,4vw,48px);border:1px solid rgba(91,49,85,.15);border-radius:30px;background:linear-gradient(125deg,rgba(247,229,235,.82),rgba(255,255,255,.93) 46%,rgba(227,242,241,.78));box-shadow:0 24px 64px rgba(82,48,73,.12)}
+.home-contact-panel::before{content:"";position:absolute;right:-90px;top:-105px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(103,170,173,.23),transparent 68%);pointer-events:none}
+.home-contact-panel::after{content:"";position:absolute;left:-95px;bottom:-130px;width:290px;height:290px;border-radius:50%;background:radial-gradient(circle,rgba(206,112,140,.19),transparent 68%);pointer-events:none}
+.home-contact-intro{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);align-items:end;gap:42px;margin-bottom:32px}
+.home-contact-intro h2{margin-top:15px;font-size:clamp(34px,4vw,50px);max-width:760px}
+.home-contact-intro p{margin:0;color:var(--ink-2);font-size:16px;line-height:1.75;font-weight:520}
+.home-contact-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.home-contact-card{--contact-accent:var(--rose-deep);position:relative;display:flex;align-items:center;gap:18px;min-height:148px;padding:27px 25px;border:1px solid rgba(91,49,85,.16);border-left:4px solid var(--contact-accent);border-radius:21px;background:rgba(255,255,255,.92);box-shadow:0 12px 30px rgba(82,48,73,.09);overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease,background .25s ease}
+.home-contact-card.linkedin{--contact-accent:var(--aqua-deep)}
+.home-contact-card.phone{--contact-accent:var(--gold-deep)}
+.home-contact-card.email{--contact-accent:var(--rose-deep)}
+.home-contact-card::after{content:"";position:absolute;right:-38px;bottom:-48px;width:125px;height:125px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--contact-accent) 17%,transparent),transparent 68%)}
+.home-contact-card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--contact-accent) 46%,transparent);background:#fff;box-shadow:0 20px 42px rgba(82,48,73,.14)}
+.home-contact-card .feature-icon{width:60px;height:60px;margin:0;border-radius:18px;flex:0 0 auto;box-shadow:inset 0 0 0 1px rgba(255,255,255,.72)}
+.home-contact-card .feature-icon svg{width:29px;height:29px}
+.home-contact-copy{min-width:0;position:relative;z-index:1}
+.home-contact-card strong{display:block;font-family:var(--serif);font-size:23px;line-height:1.12;font-weight:600;color:var(--ink)}
+.home-contact-card span{display:block;margin-top:8px;color:var(--ink-2);font-size:15px;line-height:1.35;font-weight:650;overflow-wrap:anywhere}
+.home-contact-card small{display:flex;align-items:center;gap:7px;margin-top:13px;color:var(--contact-accent);font-size:12px;font-weight:800;letter-spacing:.01em}
+.home-contact-card small svg{width:14px;height:14px;transition:transform .25s ease}
+.home-contact-card:hover small svg{transform:translateX(4px)}
+@media(max-width:980px){.home-contact-intro{grid-template-columns:1fr;gap:14px}.home-contact-grid{grid-template-columns:1fr}.home-contact-card{min-height:126px}}
+@media(max-width:650px){.home-contact-wrap{padding:34px 0 62px}.home-contact-panel{padding:24px 18px;border-radius:24px}.home-contact-intro h2{font-size:34px}.home-contact-intro p{font-size:15px}.home-contact-card{min-height:116px;padding:21px 18px;gap:14px}.home-contact-card .feature-icon{width:54px;height:54px}.home-contact-card strong{font-size:21px}.home-contact-card span{font-size:14px}}
+
+
+/* ==========================================================
+   HOME — CASES E CONTATOS COMPACTOS
+   ========================================================== */
+#homeCases{gap:16px}
+#homeCases .case-thumb{height:142px}
+#homeCases .case-body{padding:15px 17px 16px}
+#homeCases .case-body h3{margin-top:9px;font-size:19px;line-height:1.12}
+#homeCases .case-body p{margin:9px 0 0;font-size:12px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#homeCases .case-link{margin-top:11px}
+#homeCases .tag{padding:5px 8px;font-size:9px}
+.home-contact-wrap{padding:36px 0 68px}
+.home-contact-panel{padding:27px 30px 29px;border-radius:25px}
+.home-contact-panel::before{width:210px;height:210px;right:-80px;top:-95px}
+.home-contact-panel::after{width:210px;height:210px;left:-85px;bottom:-110px}
+.home-contact-intro{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:19px}
+.home-contact-intro h2{margin-top:11px;font-size:clamp(29px,3vw,38px);max-width:none}
+.home-contact-intro p{max-width:510px;font-size:14px;line-height:1.55;text-align:right}
+.home-contact-grid{gap:14px}
+.home-contact-card{min-height:98px;padding:17px 18px;gap:14px;border-radius:18px}
+.home-contact-card.whatsapp{--contact-accent:#278b63}
+.home-contact-card .feature-icon{width:49px;height:49px;border-radius:15px}
+.home-contact-card .feature-icon svg{width:24px;height:24px}
+.home-contact-card strong{font-size:19px}
+.home-contact-card span{margin-top:4px;font-size:13px}
+.home-contact-card small{margin-top:8px;font-size:10px}
+@media(max-width:980px){
+  .home-contact-intro{display:grid;grid-template-columns:1fr;gap:7px}
+  .home-contact-intro p{text-align:left;max-width:700px}
+  .home-contact-card{min-height:92px}
+}
+@media(max-width:650px){
+  #homeCases .case-thumb{height:145px}
+  .home-contact-wrap{padding:28px 0 52px}
+  .home-contact-panel{padding:21px 17px 22px;border-radius:22px}
+  .home-contact-intro h2{font-size:29px}
+  .home-contact-intro p{font-size:13px}
+  .home-contact-card{min-height:88px;padding:15px 14px;gap:12px}
+  .home-contact-card .feature-icon{width:46px;height:46px}
+  .home-contact-card strong{font-size:18px}
+  .home-contact-card span{font-size:13px}
+}
+
 </style>
 </head>
 <body>
@@ -118,8 +188,10 @@ button,input,textarea,select{font:inherit}button,a{touch-action:manipulation}a{c
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 20 6v5c0 5-3.2 8.3-8 10-4.8-1.7-8-5-8-10V6l8-3z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m8.5 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M7.2 3.5 10 7.8 8.2 10c1.3 2.6 3.3 4.6 5.9 5.9l2.2-1.8 4.3 2.8-.8 3.2c-.2.8-.9 1.4-1.8 1.4C9.5 21.5 2.5 14.5 2.5 6c0-.9.6-1.6 1.4-1.8l3.3-.7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-4.2A8.5 8.5 0 1 1 20.5 11.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.1 7.4c.3-.5.6-.5.9-.5h.5c.2 0 .4.1.5.4l.9 2.1c.1.3.1.5-.1.7l-.7.9c-.2.2-.1.4 0 .6.7 1.3 1.7 2.3 3 3 .2.1.4.2.6 0l.9-1.1c.2-.2.4-.3.7-.1l2 .9c.3.1.4.3.4.5 0 .4-.2 1.6-1.1 2.1-.7.5-1.7.7-2.7.4-1.1-.3-2.5-1-4-2.3-1.2-1-2.3-2.4-2.9-3.7-.6-1.2-.7-2.3-.3-3.2.2-.4.4-.6.5-.7Z" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14 8 16a4 4 0 1 1-6-6l3-3a4 4 0 0 1 6 0m3 3 2-2a4 4 0 1 1 6 6l-3 3a4 4 0 0 1-6 0M8 12h8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 19h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="9" r="1" fill="currentColor"/><path d="M7 11.5V17m4-5.5V17m0-3.2c0-1.4 1-2.4 2.5-2.4 1.7 0 2.5 1.1 2.5 3V17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
   <symbol id="i-location" viewBox="0 0 24 24"><path d="M12 21s7-6 7-12A7 7 0 0 0 5 9c0 6 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
   <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9c-3-3-4-6-4-9s1-6 4-9z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
   <symbol id="i-cap" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5L2 9zm4 3v5c4 3 8 3 12 0v-5m3-2v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
@@ -156,7 +228,7 @@ button,input,textarea,select{font:inherit}button,a{touch-action:manipulation}a{c
         <div class="actions">
           <button class="btn btn-primary" data-route="cases">Ver meus cases <svg><use href="#i-arrow"/></svg></button>
           <button class="btn btn-aqua" data-route="lab">Explorar laboratório <svg><use href="#i-spark"/></svg></button>
-          <button class="btn btn-outline" data-cv>Baixar currículo <svg><use href="#i-download"/></svg></button>
+          <button class="btn btn-outline" data-linkedin aria-label="Ver currículo profissional no LinkedIn">Ver currículo <svg><use href="#i-linkedin"/></svg></button>
         </div>
       </div>
       <div class="visual-shell reveal" aria-label="Ilustração de IA conectando estratégia, discovery, execução e resultados">
@@ -210,13 +282,26 @@ button,input,textarea,select{font:inherit}button,a{touch-action:manipulation}a{c
     <div class="section-head reveal"><div><span class="eyebrow">Cases em destaque</span><h2 style="margin-top:15px">Negócio, tecnologia e <span class="tech">IA aplicada</span>.</h2></div><p>Cenários demonstrativos baseados em desafios de mercado, sem expor informações confidenciais.</p></div>
     <div class="case-grid" id="homeCases"></div>
   </div></div>
-  <div class="section compact"><div class="container band reveal"><div><h2>Inovação com propósito, estratégia com sensibilidade.</h2><p>LLMs com curadoria humana, proteção de dados e foco em valor real.</p></div><button class="btn btn-aqua" data-route="lab">Explorar IA & LLMs <svg><use href="#i-arrow"/></svg></button></div></div>
   <div class="section home-contact-wrap"><div class="container">
-    <div class="section-head reveal"><div><span class="eyebrow">Vamos conversar</span><h2 style="margin-top:15px">Conexões que podem virar <span class="accent">bons projetos</span>.</h2></div><p>Entre em contato por LinkedIn, telefone ou e-mail. Responderei assim que possível.</p></div>
-    <div class="home-contact-grid reveal">
-      <a class="home-contact-card" href="https://www.linkedin.com/in/deisesimongroehs/" target="_blank" rel="noopener noreferrer"><div class="feature-icon aqua"><svg><use href="#i-link"/></svg></div><div><strong>LinkedIn</strong><span>linkedin.com/in/deisesimongroehs</span></div><svg class="arrow"><use href="#i-arrow"/></svg></a>
-      <a class="home-contact-card" href="tel:+5551995831313"><div class="feature-icon gold"><svg><use href="#i-phone"/></svg></div><div><strong>Telefone</strong><span>51 99583-1313</span></div><svg class="arrow"><use href="#i-arrow"/></svg></a>
-      <a class="home-contact-card" href="mailto:simongroehs@gmail.com"><div class="feature-icon"><svg><use href="#i-mail"/></svg></div><div><strong>E-mail</strong><span>simongroehs@gmail.com</span></div><svg class="arrow"><use href="#i-arrow"/></svg></a>
+    <div class="home-contact-panel reveal">
+      <div class="home-contact-intro">
+        <div><span class="eyebrow">Contato direto</span><h2>Meus <span class="accent">contatos</span>.</h2></div>
+        <p>Disponível para oportunidades remotas e conversas sobre projetos, produtos e tecnologia.</p>
+      </div>
+      <div class="home-contact-grid">
+        <a class="home-contact-card linkedin" href="https://www.linkedin.com/in/deisesimongroehs/" target="_blank" rel="noopener noreferrer" aria-label="Abrir LinkedIn de Deise Simon Groehs">
+          <div class="feature-icon aqua"><svg><use href="#i-linkedin"/></svg></div>
+          <div class="home-contact-copy"><strong>LinkedIn</strong><span>deisesimongroehs</span><small>Conheça minha trajetória <svg><use href="#i-arrow"/></svg></small></div>
+        </a>
+        <a class="home-contact-card whatsapp" href="https://wa.me/5551995831313" target="_blank" rel="noopener noreferrer" aria-label="Chamar Deise Simon Groehs no WhatsApp">
+          <div class="feature-icon aqua"><svg><use href="#i-whatsapp"/></svg></div>
+          <div class="home-contact-copy"><strong>WhatsApp</strong><span>(51) 99583-1313</span><small>Chamar no WhatsApp <svg><use href="#i-arrow"/></svg></small></div>
+        </a>
+        <a class="home-contact-card email" href="mailto:simongroehs@gmail.com" aria-label="Enviar e-mail para Deise Simon Groehs">
+          <div class="feature-icon"><svg><use href="#i-mail"/></svg></div>
+          <div class="home-contact-copy"><strong>E-mail</strong><span>simongroehs@gmail.com</span><small>Enviar uma mensagem <svg><use href="#i-arrow"/></svg></small></div>
+        </a>
+      </div>
     </div>
   </div></div>
 </section>
@@ -334,8 +419,8 @@ button,input,textarea,select{font:inherit}button,a{touch-action:manipulation}a{c
     <div class="stack">
       <article class="card contact-item reveal"><div class="feature-icon aqua"><svg><use href="#i-link"/></svg></div><div><strong>LinkedIn</strong><span>linkedin.com/in/deisesimongroehs</span><div style="margin-top:8px"><button class="btn btn-ghost" data-linkedin>Abrir perfil</button></div></div></article>
       <article class="card contact-item reveal"><div class="feature-icon"><svg><use href="#i-mail"/></svg></div><div><strong>E-mail</strong><span>simongroehs@gmail.com</span><div style="margin-top:8px"><button class="btn btn-ghost" data-email>Enviar e-mail</button></div></div></article>
-      <article class="card contact-item reveal"><div class="feature-icon gold"><svg><use href="#i-phone"/></svg></div><div><strong>Telefone</strong><span>51 99583-1313</span><div style="margin-top:8px"><button class="btn btn-ghost" data-phone>Ligar</button></div></div></article>
-      <article class="card contact-item reveal"><div class="feature-icon gold"><svg><use href="#i-download"/></svg></div><div><strong>Currículo</strong><span>Baixe a versão atualizada em PDF.</span><div style="margin-top:8px"><button class="btn btn-ghost" data-cv>Baixar currículo</button></div></div></article>
+      <article class="card contact-item reveal"><div class="feature-icon aqua"><svg><use href="#i-whatsapp"/></svg></div><div><strong>WhatsApp</strong><span>(51) 99583-1313</span><div style="margin-top:8px"><a class="btn btn-ghost" href="https://wa.me/5551995831313" target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a></div></div></article>
+      <article class="card contact-item reveal"><div class="feature-icon gold"><svg><use href="#i-linkedin"/></svg></div><div><strong>Currículo profissional</strong><span>Veja minha trajetória, experiências e formação no LinkedIn.</span><div style="margin-top:8px"><button class="btn btn-ghost" data-linkedin>Ver no LinkedIn</button></div></div></article>
       <article class="card contact-item reveal"><div class="feature-icon mauve"><svg><use href="#i-location"/></svg></div><div><strong>Florianópolis - SC</strong><span>Preferência por oportunidades remotas.</span></div></article>
     </div>
     <article class="card form-card reveal"><span class="eyebrow">Envie uma mensagem</span><h2 style="font-size:36px;margin:14px 0">Conte-me sobre a oportunidade</h2><form id="contactForm" class="stack"><div class="form-row"><div><label for="contactName">Nome</label><input class="input" id="contactName" name="nome" required placeholder="Seu nome"></div><div><label for="contactEmail">E-mail</label><input class="input" id="contactEmail" name="email" type="email" required placeholder="seu@email.com"></div></div><div><label for="contactSubject">Assunto</label><input class="input" id="contactSubject" name="assunto" placeholder="Vaga, projeto ou parceria"></div><div><label for="contactMessage">Mensagem</label><textarea id="contactMessage" name="mensagem" required placeholder="Conte-me um pouco sobre o contexto..."></textarea></div><button class="btn btn-primary" type="submit">Enviar mensagem <svg><use href="#i-arrow"/></svg></button><div class="simulation-note"><svg style="width:17px;height:17px;flex:0 0 auto"><use href="#i-shield"/></svg><span>O formulário abre o seu aplicativo de e-mail. Nenhum dado é armazenado pelo site.</span></div></form></article>
