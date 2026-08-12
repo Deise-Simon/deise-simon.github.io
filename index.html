@@ -755,11 +755,403 @@ initDynamicEvents();
 
 /* BACK TO TOP */
 const back=document.querySelector('.back-top');window.addEventListener('scroll',()=>back.classList.toggle('visible',scrollY>650));back.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
-</script>
-
 <script>
-  // melhorias do case E-commerce ficam aqui dentro
+/* ==========================================================
+   DEISE SIMON GROEHS — ENHANCEMENT DO CASE E-COMMERCE
+   Carregar DEPOIS do script principal do portfólio.
+   ========================================================== */
+(() => {
+  'use strict';
+
+  const ECOMMERCE_URL = 'https://deise-simon.github.io/ecommerce.html#/home';
+  const ecommerceCase = cases.find(c => c.id === 'ecommerce');
+
+  if (!ecommerceCase) return;
+
+  /* 1) Posicionamento do case */
+  Object.assign(ecommerceCase, {
+    title: 'E-commerce B2C — Loja Case Deise',
+    desc: 'Protótipo funcional de ponta a ponta: Home, categoria, PDP, carrinho e checkout simulado, com UX responsiva e regras de negócio.',
+    category: 'E-commerce'
+  });
+
+  /* 2) Melhora o texto da página geral de Cases */
+  const casesLead = document.querySelector('[data-page="cases"] .lead');
+  if (casesLead) {
+    casesLead.textContent =
+      'Cada case mostra raciocínio, jornada, decisões e entregáveis. Quando aplicável, também apresento uso de IA; métricas simuladas são sempre identificadas.';
+  }
+
+  /* 3) Estilos do card e do case detalhado */
+  if (!document.getElementById('ecommerce-portfolio-enhancement-styles')) {
+    const style = document.createElement('style');
+    style.id = 'ecommerce-portfolio-enhancement-styles';
+    style.textContent = `
+      .case-card-live .case-body{display:flex;flex-direction:column;height:calc(100% - 190px)}
+      .case-card-live .case-body p{min-height:58px}
+      .case-live-badges{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+      .case-actions{display:grid;grid-template-columns:1fr;gap:9px;margin-top:auto;padding-top:14px}
+      .case-actions .btn{width:100%;min-height:42px}
+      .case-actions .btn svg{width:15px;height:15px}
+      .case-live-link{background:linear-gradient(135deg,var(--aqua-deep),var(--aqua));color:#fff}
+      .case-live-link:hover{color:#fff}
+      .ecommerce-intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+      .ecommerce-feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+      .ecommerce-feature{min-height:155px}
+      .ecommerce-feature strong{display:block;margin-bottom:7px;color:var(--plum-deep)}
+      .ecommerce-tech-stack{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+      .ecommerce-tech-stack .pill{font-weight:750}
+      .ecommerce-live-band{border-color:rgba(47,125,130,.22);background:linear-gradient(110deg,rgba(227,242,241,.76),rgba(255,255,255,.92),rgba(247,229,235,.56))}
+      .ecommerce-note{display:flex;gap:10px;align-items:flex-start;padding:15px 16px;border:1px solid var(--line);border-radius:15px;background:#fff;color:var(--ink-2);font-size:12px;line-height:1.6}
+      .ecommerce-note svg{width:18px;height:18px;color:var(--aqua-deep);flex:0 0 auto;margin-top:1px}
+      @media(max-width:980px){
+        .ecommerce-feature-grid{grid-template-columns:repeat(2,1fr)}
+        .ecommerce-intro-grid{grid-template-columns:1fr}
+      }
+      @media(max-width:650px){
+        .case-card-live .case-body{height:auto}
+        .case-card-live .case-body p{min-height:0}
+        .ecommerce-feature-grid{grid-template-columns:1fr}
+        .ecommerce-live-band .btn{width:100%}
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  /* 4) Thumbnail específico: mostra uma loja, não um dashboard genérico */
+  const ecommerceThumb = () => `
+    <svg viewBox="0 0 420 190" aria-hidden="true">
+      <defs>
+        <linearGradient id="ecomThumbBg" x1="0" y1="0" x2="1" y2="1">
+          <stop stop-color="#fff"/>
+          <stop offset="1" stop-color="#e3f2f1"/>
+        </linearGradient>
+        <linearGradient id="ecomThumbHero" x1="0" y1="0" x2="1" y2="1">
+          <stop stop-color="#f7e5eb"/>
+          <stop offset="1" stop-color="#eee6f2"/>
+        </linearGradient>
+      </defs>
+      <rect width="420" height="190" fill="url(#ecomThumbBg)"/>
+      <circle cx="363" cy="25" r="72" fill="#67aaad" opacity=".08"/>
+      <g transform="translate(40 22)" filter="url(#shadow)">
+        <rect width="340" height="146" rx="16" fill="#fff" stroke="#eadce2"/>
+        <rect width="340" height="26" rx="16" fill="#fffaf8"/>
+        <circle cx="18" cy="13" r="3" fill="#ce708c"/>
+        <rect x="31" y="9" width="66" height="7" rx="3.5" fill="#5b3155" opacity=".72"/>
+        <rect x="232" y="9" width="48" height="7" rx="3.5" fill="#d8eceb"/>
+        <circle cx="312" cy="13" r="7" fill="#f7e5eb"/>
+        <rect x="14" y="36" width="312" height="45" rx="11" fill="url(#ecomThumbHero)"/>
+        <rect x="28" y="47" width="96" height="8" rx="4" fill="#5b3155" opacity=".72"/>
+        <rect x="28" y="62" width="70" height="6" rx="3" fill="#ce708c" opacity=".55"/>
+        <rect x="244" y="45" width="53" height="27" rx="9" fill="#67aaad" opacity=".72"/>
+        ${[0,1,2,3].map(i => `
+          <g transform="translate(${14+i*79} 92)">
+            <rect width="68" height="42" rx="9" fill="${i%2 ? '#e3f2f1' : '#f7e5eb'}"/>
+            <circle cx="34" cy="16" r="${9+i}" fill="${i%2 ? '#67aaad' : '#ce708c'}" opacity=".34"/>
+            <rect x="9" y="31" width="37" height="5" rx="2.5" fill="#5b3155" opacity=".35"/>
+            <rect x="50" y="31" width="10" height="5" rx="2.5" fill="#c99a4c" opacity=".65"/>
+          </g>
+        `).join('')}
+      </g>
+    </svg>
+  `;
+
+  /* 5) Card especial, com duas ações claras */
+  const enhancedCard = c => {
+    if (c.id !== 'ecommerce') return caseCard(c);
+
+    return `
+      <article class="card case-card case-card-live hover reveal" data-category="${c.category}">
+        <div class="case-thumb">${ecommerceThumb()}</div>
+        <div class="case-body">
+          <div class="case-live-badges">
+            <span class="tag">${c.category}</span>
+            <span class="tag aqua">Protótipo funcional</span>
+          </div>
+          <h3>${c.title}</h3>
+          <p>${c.desc}</p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-ghost" data-route="${c.route}">
+              Ver detalhes ${icon('i-arrow')}
+            </button>
+            <a class="btn case-live-link"
+               href="${ECOMMERCE_URL}"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Abrir protótipo funcional do e-commerce em nova guia">
+              Explorar protótipo funcional ↗
+            </a>
+          </div>
+        </div>
+      </article>
+    `;
+  };
+
+  /* 6) Re-renderiza Home + aba Cases */
+  const homeCases = document.getElementById('homeCases');
+  const allCases = document.getElementById('allCases');
+
+  if (homeCases) {
+    homeCases.innerHTML = cases.slice(0, 3).map(enhancedCard).join('');
+  }
+
+  if (allCases) {
+    allCases.innerHTML = cases.map(enhancedCard).join('');
+  }
+
+  /* 7) Visual do detalhe — storefront desktop + mobile */
+  visuals.ecommerce = `
+    <svg viewBox="0 0 620 440" role="img" aria-label="Representação do protótipo e-commerce em desktop e mobile">
+      <defs>
+        <linearGradient id="ecomHero" x1="0" y1="0" x2="1" y2="1">
+          <stop stop-color="#f7e5eb"/>
+          <stop offset="1" stop-color="#e3f2f1"/>
+        </linearGradient>
+      </defs>
+      <g filter="url(#shadow)">
+        <rect x="35" y="48" width="408" height="300" rx="22" fill="#fff" stroke="#eadce2"/>
+        <rect x="35" y="48" width="408" height="36" rx="22" fill="#fffaf8"/>
+        <circle cx="58" cy="66" r="4" fill="#ce708c"/>
+        <circle cx="72" cy="66" r="4" fill="#c99a4c"/>
+        <circle cx="86" cy="66" r="4" fill="#67aaad"/>
+        <rect x="105" y="61" width="94" height="10" rx="5" fill="#5b3155" opacity=".65"/>
+        <rect x="312" y="61" width="76" height="9" rx="4.5" fill="#d8eceb"/>
+        <rect x="55" y="99" width="368" height="91" rx="16" fill="url(#ecomHero)"/>
+        <rect x="76" y="120" width="142" height="12" rx="6" fill="#5b3155" opacity=".76"/>
+        <rect x="76" y="144" width="104" height="8" rx="4" fill="#ce708c" opacity=".55"/>
+        <rect x="318" y="120" width="72" height="40" rx="12" fill="#67aaad" opacity=".8"/>
+        ${[0,1,2].map(i => `
+          <g transform="translate(${55+i*124} 209)">
+            <rect width="108" height="113" rx="14" fill="#fff" stroke="#eadce2"/>
+            <rect x="10" y="10" width="88" height="61" rx="11" fill="${i===1 ? '#e3f2f1' : '#f7e5eb'}"/>
+            <circle cx="54" cy="39" r="${17+i*3}" fill="${i===1 ? '#67aaad' : '#ce708c'}" opacity=".30"/>
+            <rect x="12" y="82" width="64" height="8" rx="4" fill="#5b3155" opacity=".34"/>
+            <rect x="12" y="98" width="42" height="7" rx="3.5" fill="#c99a4c" opacity=".65"/>
+          </g>
+        `).join('')}
+      </g>
+
+      <g class="svg-float" filter="url(#shadow)">
+        <rect x="462" y="95" width="124" height="242" rx="25" fill="#fff" stroke="#d8eceb" stroke-width="3"/>
+        <rect x="474" y="119" width="100" height="52" rx="12" fill="url(#ecomHero)"/>
+        <rect x="486" y="132" width="52" height="7" rx="3.5" fill="#5b3155" opacity=".58"/>
+        ${[0,1,2].map(i => `
+          <g transform="translate(474 ${184+i*47})">
+            <rect width="100" height="38" rx="10" fill="#fffaf8" stroke="#eadce2"/>
+            <rect x="7" y="7" width="27" height="24" rx="7" fill="${i%2 ? '#e3f2f1' : '#f7e5eb'}"/>
+            <rect x="42" y="10" width="40" height="6" rx="3" fill="#5b3155" opacity=".35"/>
+            <rect x="42" y="22" width="27" height="5" rx="2.5" fill="#c99a4c" opacity=".58"/>
+          </g>
+        `).join('')}
+        <rect x="496" y="320" width="54" height="5" rx="2.5" fill="#5b3155" opacity=".18"/>
+      </g>
+
+      <path d="M428 180C458 171 466 165 479 155" fill="none" stroke="#c99a4c" stroke-width="2" stroke-dasharray="4 6"/>
+      <text x="302" y="388" text-anchor="middle" fill="#5b3155" font-family="Georgia" font-size="22">Home → PLP → PDP → Carrinho → Checkout</text>
+      <text x="302" y="413" text-anchor="middle" fill="#766978" font-size="12">desktop + mobile · jornada funcional simulada</text>
+    </svg>
+  `;
+
+  /* 8) Conteúdo do detalhe do case */
+  const ecommerceMeta = [
+    ['Área', 'E-commerce B2C'],
+    ['Escopo', 'Home → Checkout'],
+    ['Entrega', 'Protótipo funcional'],
+    ['Tecnologia', 'HTML • CSS • JavaScript']
+  ];
+
+  const ecommerceSubtitle =
+    'Protótipo funcional de uma jornada B2C completa, criado para demonstrar visão de produto, UX, regras de negócio, responsividade e desenvolvimento front-end — sem transações reais.';
+
+  const ecommerceBodyEnhanced = () =>
+    `
+      <div class="section compact">
+        <div class="container">
+          <div class="band ecommerce-live-band reveal">
+            <div>
+              <span class="eyebrow">Projeto publicado</span>
+              <h2 style="margin-top:11px">Navegue pela jornada <span class="tech">funcional</span>.</h2>
+              <p>Explore Home, categoria, PDP, carrinho, checkout e confirmação de pedido em desktop ou mobile.</p>
+            </div>
+            <a class="btn btn-aqua"
+               href="${ECOMMERCE_URL}"
+               target="_blank"
+               rel="noopener noreferrer">
+              Abrir protótipo funcional ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      ${section(
+        'Por que construí este <span class="accent">case</span>',
+        'Objetivo',
+        `
+          <div class="ecommerce-intro-grid">
+            <article class="card reveal">
+              <div class="feature-icon"><svg><use href="#i-target"/></svg></div>
+              <h3>Desafio</h3>
+              <p class="muted">Transformar conhecimento de e-commerce em uma experiência navegável de ponta a ponta, demonstrando não apenas telas, mas decisões, estados, regras e comportamento da jornada.</p>
+            </article>
+            <article class="card reveal">
+              <div class="feature-icon aqua"><svg><use href="#i-check"/></svg></div>
+              <h3>Escopo demonstrativo</h3>
+              <p class="muted">Catálogo, navegação, busca, filtros, produto, variantes, carrinho e checkout são funcionais no navegador. Pagamento, estoque, frete e pedido são intencionalmente simulados.</p>
+            </article>
+          </div>
+        `
+      )}
+
+      ${section(
+        'Jornada de compra <span class="tech">ponta a ponta</span>',
+        'Fluxo',
+        flow([
+          ['Home', 'Descoberta e vitrines'],
+          ['Categoria / PLP', 'Busca, filtros e ordenação'],
+          ['PDP', 'Produto, variante e frete'],
+          ['Carrinho', 'Itens e benefício de frete'],
+          ['Checkout', 'Identificação, entrega e pagamento'],
+          ['Confirmação', 'Pedido demonstrativo']
+        ])
+      )}
+
+      ${section(
+        'Decisões de <span class="accent">produto e UX</span>',
+        'Experiência',
+        `
+          <div class="ecommerce-feature-grid">
+            <article class="card ecommerce-feature reveal"><strong>Descoberta</strong><p class="muted">Hero, categorias, vitrines, busca e recomendações estruturam a entrada na jornada.</p></article>
+            <article class="card ecommerce-feature reveal"><strong>PLP responsiva</strong><p class="muted">Filtros ativos, ordenação, chips e bottom sheet no mobile reduzem atrito na exploração.</p></article>
+            <article class="card ecommerce-feature reveal"><strong>PDP orientada à decisão</strong><p class="muted">Galeria, swipe mobile, variação, SKU, quantidade, frete e CTA persistente.</p></article>
+            <article class="card ecommerce-feature reveal"><strong>Carrinho</strong><p class="muted">Minicart lateral, persistência, variantes separadas e régua de frete grátis.</p></article>
+            <article class="card ecommerce-feature reveal"><strong>Checkout focado</strong><p class="muted">Fluxo em etapas sem distrações: identificação, entrega, pagamento, revisão e confirmação.</p></article>
+            <article class="card ecommerce-feature reveal"><strong>Regras comerciais</strong><p class="muted">Cupom DEISE10, desconto Pix, modalidades de frete e cálculo centralizado do total.</p></article>
+            <article class="card ecommerce-feature reveal"><strong>Mobile first</strong><p class="muted">Busca própria, filtros touch, carousel swipe, sticky CTA e navegação adaptada.</p></article>
+            <article class="card ecommerce-feature reveal"><strong>Acessibilidade</strong><p class="muted">Focus trap, ARIA, skip link, reduced motion, foco visível e mensagens de erro associadas aos campos.</p></article>
+          </div>
+        `
+      )}
+
+      ${section(
+        'Arquitetura do <span class="tech">protótipo</span>',
+        'Tecnologia',
+        `
+          <div class="grid-3">
+            <article class="card reveal">
+              <div class="feature-icon aqua"><svg><use href="#i-blocks"/></svg></div>
+              <h3>Front-end estático</h3>
+              <p class="muted">HTML, CSS e JavaScript puro em uma SPA por hash, ideal para publicação no GitHub Pages.</p>
+            </article>
+            <article class="card reveal">
+              <div class="feature-icon gold"><svg><use href="#i-layers"/></svg></div>
+              <h3>Estado da jornada</h3>
+              <p class="muted">Carrinho e favoritos usam localStorage; o checkout usa sessionStorage para preservar apenas a sessão demonstrativa.</p>
+            </article>
+            <article class="card reveal">
+              <div class="feature-icon"><svg><use href="#i-shield"/></svg></div>
+              <h3>Sem transação real</h3>
+              <p class="muted">Não há backend, gateway, bandeiras ou cobrança. Dados e pedidos são fictícios e processados localmente.</p>
+            </article>
+          </div>
+          <div class="ecommerce-tech-stack reveal">
+            <span class="pill">Router por hash</span>
+            <span class="pill">Pricing Engine</span>
+            <span class="pill">localStorage</span>
+            <span class="pill">sessionStorage</span>
+            <span class="pill">Responsive UI</span>
+            <span class="pill">ARIA</span>
+            <span class="pill">Product Events</span>
+          </div>
+        `
+      )}
+
+      ${section(
+        'Regras de negócio <span class="accent">simuladas</span>',
+        'Commerce Engine',
+        `
+          <div class="grid-4">
+            <article class="card reveal"><h3>Variantes e SKU</h3><p class="muted">Cor/variante faz parte da linha do carrinho, evitando mesclar SKUs diferentes.</p></article>
+            <article class="card reveal"><h3>Preço e desconto</h3><p class="muted">Uma única função calcula subtotal, cupom, desconto Pix, frete e total.</p></article>
+            <article class="card reveal"><h3>Entrega</h3><p class="muted">Padrão, rápida e retirada atualizam preço e promessa demonstrativa de entrega.</p></article>
+            <article class="card reveal"><h3>Pagamento fake</h3><p class="muted">Cartão, Pix e boleto são opções puramente demonstrativas, sem integração financeira.</p></article>
+          </div>
+        `
+      )}
+
+      ${section(
+        'Instrumentação da <span class="tech">jornada</span>',
+        'Product Analytics',
+        `
+          <div class="grid-2">
+            <article class="card reveal">
+              <h3>Eventos preparados</h3>
+              <p class="muted">A estrutura contempla eventos como <strong>view_item_list</strong>, <strong>select_item</strong>, <strong>view_item</strong>, <strong>add_to_cart</strong>, <strong>begin_checkout</strong>, <strong>add_shipping_info</strong>, <strong>add_payment_info</strong> e <strong>purchase</strong>.</p>
+            </article>
+            <article class="card reveal">
+              <h3>Sem rastreamento externo</h3>
+              <p class="muted">Os eventos existem para demonstrar pensamento de funil e mensuração. O case publicado não envia analytics ou dados do visitante para serviços externos.</p>
+            </article>
+          </div>
+        `
+      )}
+
+      ${section(
+        'O que este case <span class="accent">demonstra</span>',
+        'Visão 360',
+        `
+          <div class="grid-4">
+            <article class="card reveal"><h3>Produto</h3><p class="muted">Jornada, regras, estados, priorização de funcionalidades e pensamento de conversão.</p></article>
+            <article class="card reveal"><h3>UX</h3><p class="muted">Hierarquia, redução de atrito, responsividade, microinterações e acessibilidade.</p></article>
+            <article class="card reveal"><h3>Tecnologia</h3><p class="muted">Arquitetura front-end, persistência, router, validações e tratamento de edge cases.</p></article>
+            <article class="card reveal"><h3>Qualidade</h3><p class="muted">Consistência de cálculo, estados, validações, desktop/mobile e comportamento do checkout.</p></article>
+          </div>
+          <div class="ecommerce-note reveal" style="margin-top:18px">
+            ${icon('i-shield')}
+            <span><strong>Transparência:</strong> este projeto é um protótipo funcional de portfólio. Não representa uma loja em produção e não realiza compras, cobranças, consultas de estoque ou cálculo real de transportadora.</span>
+          </div>
+        `
+      )}
+
+      <div class="section compact">
+        <div class="container band ecommerce-live-band reveal">
+          <div>
+            <h2>Veja a experiência <span class="tech">funcionando</span>.</h2>
+            <p>Abra o projeto em outra guia e percorra toda a jornada da Home à confirmação do checkout simulado.</p>
+          </div>
+          <a class="btn btn-aqua"
+             href="${ECOMMERCE_URL}"
+             target="_blank"
+             rel="noopener noreferrer">
+            Explorar Loja Case Deise ↗
+          </a>
+        </div>
+      </div>
+    `;
+
+  const detailPage = document.querySelector('[data-page="case-ecommerce"]');
+  if (detailPage) {
+    const next = cases[1];
+    detailPage.innerHTML =
+      commonCaseHeader(
+        ecommerceCase,
+        ecommerceSubtitle,
+        visuals.ecommerce,
+        ecommerceMeta
+      ) +
+      ecommerceBodyEnhanced() +
+      nextCase(next.route, next.title);
+  }
+
+  /* 9) Atualiza título da guia se o usuário já abriu o detalhe */
+  if ((location.hash || '').replace('#/', '') === 'case-ecommerce') {
+    document.title = `${ecommerceCase.title} | Projetos, Produto e IA`;
+  }
+
+  requestAnimationFrame(() => {
+    if (typeof initReveal === 'function') initReveal();
+    if (typeof initDynamicEvents === 'function') initDynamicEvents();
+  });
+})();
+
 </script>
 
-</body>
-</html>
