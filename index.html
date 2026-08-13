@@ -567,6 +567,563 @@ textarea{min-height:130px;resize:vertical}
   *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
 }
+
+
+/* ==========================================================
+   V6 — COMPACTAÇÃO VISUAL + MICROINTERAÇÕES
+   Ajustes solicitados: Home, Sobre, Formação, Cases e IA & LLMs.
+   ========================================================== */
+
+/* ---------- Ritmo vertical mais compacto por página ---------- */
+.page[data-page="home"] .section{padding:58px 0}
+.page[data-page="home"] .section.home-contact-wrap{padding:26px 0 42px}
+.page[data-page="home"] .section-head{margin-bottom:24px}
+.page[data-page="home"] .hero{padding-bottom:22px}
+
+.page[data-page="about"] .page-hero{padding-bottom:24px}
+.page[data-page="about"] .section{padding:54px 0}
+.page[data-page="about"] .section-head{margin-bottom:24px}
+
+.page[data-page="formation"] .page-hero{padding-bottom:20px}
+.page[data-page="formation"] .section{padding:44px 0 58px!important}
+.page[data-page="formation"] .formation-group{margin-top:26px;padding-top:24px}
+.page[data-page="formation"] .section-head{margin-bottom:22px}
+
+.page[data-page="lab"] .page-hero{padding-bottom:24px}
+.page[data-page="lab"] .section{padding:56px 0}
+.page[data-page="lab"] .section-head{margin-bottom:24px}
+
+/* ---------- Home: cases em destaque mais baixos ---------- */
+#homeCases{gap:15px}
+#homeCases .case-thumb{height:118px}
+#homeCases .case-body{padding:13px 15px 14px}
+#homeCases .case-body h3{font-size:18px;line-height:1.14;margin-top:8px}
+#homeCases .case-body p{
+  margin:7px 0 0;font-size:11.5px;line-height:1.43;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden
+}
+#homeCases .case-tags{gap:5px}
+#homeCases .tag{padding:4px 7px;font-size:8.5px}
+#homeCases .case-actions{gap:6px;padding-top:10px}
+#homeCases .case-actions .btn{min-height:34px;padding:8px 10px;font-size:11px;border-radius:11px}
+#homeCases .case-link{margin-top:10px;font-size:11px}
+#homeCases .shop-thumb{padding:12px 18px}
+#homeCases .shop-browser{height:94px;border-radius:12px}
+#homeCases .shop-top{height:18px}
+#homeCases .shop-hero{height:27px;margin:5px;padding:0 8px}
+#homeCases .shop-products{gap:4px;padding:0 5px}
+#homeCases .shop-product{height:35px;padding:3px}
+#homeCases .shop-product::before{height:17px}
+#homeCases .shop-product::after{margin-top:4px;height:3px}
+#homeCases .case-illustration .icon-bubble{width:66px;height:66px;border-radius:22px;font-size:29px}
+#homeCases .case-illustration::before{width:108px;height:108px}
+#homeCases .case-illustration::after{width:160px;height:88px}
+
+/* ---------- Página Cases: cards mais compactos ---------- */
+#allCases{gap:15px}
+#allCases .case-thumb{height:128px}
+#allCases .case-body{padding:14px 15px 15px}
+#allCases .case-body h3{font-size:18px;line-height:1.14;margin-top:8px}
+#allCases .case-body p{
+  margin:7px 0 0;font-size:11.5px;line-height:1.44;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden
+}
+#allCases .tag{padding:4px 7px;font-size:8.5px}
+#allCases .case-actions{gap:6px;padding-top:10px}
+#allCases .case-actions .btn{min-height:35px;padding:8px 10px;font-size:11px;border-radius:11px}
+#allCases .case-link{margin-top:10px;font-size:11px}
+#allCases .shop-thumb{padding:14px 20px}
+#allCases .shop-browser{height:99px;border-radius:12px}
+#allCases .shop-top{height:18px}
+#allCases .shop-hero{height:29px;margin:5px;padding:0 8px}
+#allCases .shop-products{gap:4px;padding:0 5px}
+#allCases .shop-product{height:36px;padding:3px}
+#allCases .shop-product::before{height:18px}
+#allCases .shop-product::after{margin-top:4px;height:3px}
+#allCases .case-illustration .icon-bubble{width:68px;height:68px;border-radius:22px;font-size:30px}
+#allCases .case-illustration::before{width:112px;height:112px}
+#allCases .case-illustration::after{width:165px;height:92px}
+
+/* ---------- Sobre: fluxo completo sem corte no desktop ---------- */
+@media(min-width:981px){
+  .page[data-page="about"] .process{
+    display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px;overflow:visible;padding:6px 0 8px
+  }
+  .page[data-page="about"] .process-arrow{display:none}
+  .page[data-page="about"] .process-step{min-width:0;position:relative}
+  .page[data-page="about"] .process-step:not(:last-child)::after{
+    content:'→';position:absolute;right:-10px;top:20px;color:var(--gold);font-size:17px;font-weight:700
+  }
+  .page[data-page="about"] .process-step strong{font-size:11px;line-height:1.35}
+}
+
+/* ---------- Microinterações gerais ---------- */
+@keyframes softFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes processPop{0%{opacity:.35;transform:scale(.82)}65%{transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
+@keyframes haloPulse{0%,100%{box-shadow:0 0 0 14px rgba(206,112,140,.07),0 0 0 34px rgba(103,170,173,.045)}50%{box-shadow:0 0 0 22px rgba(206,112,140,.045),0 0 0 48px rgba(103,170,173,.025)}}
+@keyframes shineSweep{0%{transform:translateX(-160%) skewX(-18deg)}100%{transform:translateX(330%) skewX(-18deg)}}
+@keyframes badgePop{0%{transform:scale(.72) rotate(-7deg);opacity:.35}70%{transform:scale(1.08) rotate(2deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+
+/* Cards ganham vida sem parecer “animados demais” */
+.card.hover,.case-card,.formation-degree-card,.pm3-card,.portrait-card{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}
+.card.hover:hover,.formation-degree-card:hover,.pm3-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(82,48,73,.105);border-color:rgba(103,170,173,.30)}
+.feature-icon{transition:transform .28s ease,filter .28s ease}
+.card:hover .feature-icon,.home-contact-card:hover .feature-icon{transform:translateY(-3px) scale(1.055)}
+
+/* Sobre — animação sequencial do processo ao entrar em tela */
+.page[data-page="about"] .process.reveal.visible .process-step .circle{animation:processPop .62s cubic-bezier(.2,.75,.25,1) both}
+.page[data-page="about"] .process.reveal.visible .process-step:nth-child(1) .circle{animation-delay:.04s}
+.page[data-page="about"] .process.reveal.visible .process-step:nth-child(3) .circle{animation-delay:.10s}
+.page[data-page="about"] .process.reveal.visible .process-step:nth-child(5) .circle{animation-delay:.16s}
+.page[data-page="about"] .process.reveal.visible .process-step:nth-child(7) .circle{animation-delay:.22s}
+.page[data-page="about"] .process.reveal.visible .process-step:nth-child(9) .circle{animation-delay:.28s}
+.page[data-page="about"] .process.reveal.visible .process-step:nth-child(11) .circle{animation-delay:.34s}
+.page[data-page="about"] .process.reveal.visible .process-step:nth-child(13) .circle{animation-delay:.40s}
+.page[data-page="about"] .process.reveal.visible .process-step:nth-child(15) .circle{animation-delay:.46s}
+.page[data-page="about"] .process-step:hover .circle{transform:translateY(-5px) scale(1.07);box-shadow:0 10px 22px rgba(82,48,73,.10)}
+.page[data-page="about"] .portrait{transition:transform .35s ease,box-shadow .35s ease}
+.page[data-page="about"] .portrait-card:hover .portrait{transform:scale(1.035) rotate(-1deg);box-shadow:0 18px 38px rgba(82,48,73,.17),0 0 0 10px rgba(247,229,235,.48)}
+
+/* Formação — ícones “entram” e cards respondem ao hover */
+.page[data-page="formation"] .formation-degree-card.reveal.visible .feature-icon{animation:badgePop .70s cubic-bezier(.2,.8,.2,1) both}
+.page[data-page="formation"] .formation-degree-card:nth-child(2).reveal.visible .feature-icon{animation-delay:.08s}
+.page[data-page="formation"] .formation-degree-card:nth-child(3).reveal.visible .feature-icon{animation-delay:.16s}
+.page[data-page="formation"] .formation-degree-card:hover .formation-level{transform:translateY(-2px);box-shadow:0 7px 17px rgba(169,71,105,.11)}
+.page[data-page="formation"] .formation-level{transition:transform .25s ease,box-shadow .25s ease}
+
+/* IA & LLMs — pulso discreto no núcleo */
+.page[data-page="lab"] .visual-shell>div{
+  animation:haloPulse 4.8s ease-in-out infinite,softFloat 6s ease-in-out infinite;
+  transition:transform .3s ease
+}
+.page[data-page="lab"] .visual-shell:hover>div{animation-play-state:paused;transform:scale(1.035)}
+
+/* Cases — brilho rápido no hover e preview do e-commerce com leve elevação */
+.case-thumb::after{
+  content:'';position:absolute;top:-25%;bottom:-25%;left:-24%;width:24%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.52),transparent);
+  transform:translateX(-160%) skewX(-18deg);pointer-events:none
+}
+.case-card:hover .case-thumb::after{animation:shineSweep .72s ease both}
+.shop-browser{transition:transform .32s ease,box-shadow .32s ease}
+.case-card:hover .shop-browser{transform:translateY(-3px) scale(1.015);box-shadow:0 15px 30px rgba(82,48,73,.13)}
+.case-illustration .icon-bubble{transition:transform .32s ease,box-shadow .32s ease}
+.case-card:hover .case-illustration .icon-bubble{transform:translateY(-4px) rotate(-2deg) scale(1.045);box-shadow:0 16px 30px rgba(82,48,73,.13)}
+
+/* Role verbs com realce progressivo no hover */
+.role-verb{transition:transform .24s ease,background .24s ease,border-color .24s ease,box-shadow .24s ease}
+.role-verb:hover{transform:translateY(-3px);background:#fff;border-color:rgba(103,170,173,.30);box-shadow:0 10px 22px rgba(82,48,73,.07)}
+
+/* ---------- Ajustes mobile ---------- */
+@media(max-width:980px){
+  .page[data-page="home"] .section,.page[data-page="about"] .section,.page[data-page="lab"] .section{padding:48px 0}
+  .page[data-page="formation"] .section{padding:38px 0 48px!important}
+  #homeCases .case-thumb{height:124px}
+  #allCases .case-thumb{height:132px}
+}
+@media(max-width:650px){
+  .page[data-page="home"] .section,.page[data-page="about"] .section,.page[data-page="lab"] .section{padding:42px 0}
+  .page[data-page="formation"] .section{padding:32px 0 42px!important}
+  .page[data-page="formation"] .formation-group{margin-top:22px;padding-top:20px}
+  #homeCases .case-thumb,#allCases .case-thumb{height:120px}
+  #homeCases .case-body,#allCases .case-body{padding:13px 14px}
+  #homeCases .case-body h3,#allCases .case-body h3{font-size:18px}
+  #homeCases .case-actions .btn,#allCases .case-actions .btn{min-height:38px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .page[data-page="lab"] .visual-shell>div,
+  .page[data-page="about"] .process.reveal.visible .process-step .circle,
+  .page[data-page="formation"] .formation-degree-card.reveal.visible .feature-icon,
+  .case-card:hover .case-thumb::after{animation:none!important}
+}
+
+
+/* ==========================================================
+   V7 — ANIMAÇÕES VISUAIS / “GIF-LIKE”
+   Movimento automático, fluxos, órbitas e microinterações.
+   ========================================================== */
+
+@keyframes gradientDrift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes railFlow{
+  to{background-position:34px 0}
+}
+@keyframes travelingDot{
+  0%{left:6%;opacity:0}
+  7%{opacity:1}
+  93%{opacity:1}
+  100%{left:94%;opacity:0}
+}
+@keyframes circleBreath{
+  0%,100%{transform:translateY(0) scale(1);box-shadow:0 0 0 0 rgba(103,170,173,0)}
+  50%{transform:translateY(-4px) scale(1.055);box-shadow:0 8px 22px rgba(82,48,73,.11),0 0 0 8px rgba(103,170,173,.055)}
+}
+@keyframes photoKenBurns{
+  0%,100%{transform:scale(1.015) translate3d(0,0,0)}
+  50%{transform:scale(1.065) translate3d(1.5%,-1%,0)}
+}
+@keyframes portraitRing{
+  0%,100%{box-shadow:0 14px 32px rgba(82,48,73,.15),0 0 0 8px rgba(247,229,235,.48),0 0 0 9px rgba(103,170,173,.08)}
+  50%{box-shadow:0 18px 38px rgba(82,48,73,.18),0 0 0 12px rgba(247,229,235,.42),0 0 0 14px rgba(206,112,140,.07)}
+}
+@keyframes cardSheenLoop{
+  0%,70%{transform:translateX(-180%) skewX(-17deg);opacity:0}
+  76%{opacity:.6}
+  92%{opacity:.3}
+  100%{transform:translateX(430%) skewX(-17deg);opacity:0}
+}
+@keyframes pillFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+}
+@keyframes formationFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+@keyframes badgeShimmer{
+  0%{background-position:0% 50%}
+  100%{background-position:200% 50%}
+}
+@keyframes iconOrbitWiggle{
+  0%,100%{transform:translateY(0) rotate(-2deg) scale(1)}
+  50%{transform:translateY(-6px) rotate(3deg) scale(1.04)}
+}
+@keyframes orbitCW{to{transform:rotate(360deg)}}
+@keyframes orbitCCW{to{transform:rotate(-360deg)}}
+@keyframes corePulseV7{
+  0%,100%{transform:scale(1);box-shadow:0 18px 50px rgba(91,49,85,.18),0 0 0 18px rgba(206,112,140,.07),0 0 0 42px rgba(103,170,173,.045)}
+  50%{transform:scale(1.045);box-shadow:0 24px 62px rgba(91,49,85,.22),0 0 0 25px rgba(206,112,140,.045),0 0 0 55px rgba(103,170,173,.025)}
+}
+@keyframes sparkBlink{
+  0%,100%{opacity:.22;transform:scale(.7) rotate(0)}
+  50%{opacity:1;transform:scale(1.25) rotate(180deg)}
+}
+@keyframes streamTravel{
+  0%{transform:translateX(-120%) scaleX(.6);opacity:0}
+  20%{opacity:.6}
+  80%{opacity:.6}
+  100%{transform:translateX(140%) scaleX(1);opacity:0}
+}
+@keyframes ringRotateSlow{to{transform:rotate(360deg)}}
+@keyframes miniCardFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-3px)}
+}
+@keyframes miniHeroPulse{
+  0%,100%{filter:saturate(1);transform:scaleX(1)}
+  50%{filter:saturate(1.18);transform:scaleX(1.04)}
+}
+@keyframes lineFlow{
+  to{background-position:54px 0}
+}
+@keyframes coreGlow{
+  0%,100%{box-shadow:0 20px 45px rgba(91,49,85,.22),0 0 0 16px rgba(206,112,140,.08)}
+  50%{box-shadow:0 24px 55px rgba(91,49,85,.26),0 0 0 23px rgba(206,112,140,.045),0 0 0 38px rgba(103,170,173,.025)}
+}
+
+/* ---------- HOME: visual estratégico passa a “respirar” ---------- */
+.page[data-page="home"] .strategy-art .core{
+  animation:coreGlow 4.8s ease-in-out infinite;
+}
+.page[data-page="home"] .visual-line{
+  background:repeating-linear-gradient(90deg,var(--aqua) 0 12px,var(--gold) 12px 24px,transparent 24px 30px);
+  background-size:54px 2px;
+  animation:lineFlow 1.8s linear infinite;
+  opacity:.62
+}
+.page[data-page="home"] .visual-card{
+  animation:softFloat 5.6s ease-in-out infinite;
+}
+.page[data-page="home"] .visual-card.two{animation-delay:-1.2s}
+.page[data-page="home"] .visual-card.three{animation-delay:-2.4s}
+.page[data-page="home"] .visual-card.four{animation-delay:-3.6s}
+
+/* ---------- SOBRE: trilho animado de ponta a ponta ---------- */
+@media(min-width:981px){
+  .page[data-page="about"] .process{
+    position:relative;
+    isolation:isolate;
+  }
+  .page[data-page="about"] .process::before{
+    content:"";
+    position:absolute;
+    left:6%;right:6%;top:34px;
+    height:3px;
+    z-index:-1;
+    border-radius:999px;
+    background:repeating-linear-gradient(90deg,rgba(201,154,76,.92) 0 10px,rgba(103,170,173,.45) 10px 18px,transparent 18px 28px);
+    background-size:34px 3px;
+    animation:railFlow 1.2s linear infinite;
+    opacity:.7;
+  }
+  .page[data-page="about"] .process::after{
+    content:"";
+    position:absolute;
+    top:29px;
+    left:6%;
+    width:13px;height:13px;border-radius:50%;
+    background:radial-gradient(circle at 35% 35%,#fff 0 18%,var(--gold) 20% 50%,var(--rose) 55% 100%);
+    box-shadow:0 0 0 5px rgba(201,154,76,.09),0 0 18px rgba(206,112,140,.25);
+    animation:travelingDot 6.5s cubic-bezier(.45,0,.55,1) infinite;
+    z-index:0;
+  }
+  .page[data-page="about"] .process-step:not(:last-child)::after{display:none}
+}
+.page[data-page="about"] .process-step .circle{
+  position:relative;
+  z-index:2;
+  background:
+    linear-gradient(145deg,rgba(247,229,235,.95),rgba(227,242,241,.95));
+  animation:circleBreath 4.2s ease-in-out infinite;
+}
+.page[data-page="about"] .process-step:nth-of-type(3) .circle{animation-delay:-.5s}
+.page[data-page="about"] .process-step:nth-of-type(5) .circle{animation-delay:-1s}
+.page[data-page="about"] .process-step:nth-of-type(7) .circle{animation-delay:-1.5s}
+.page[data-page="about"] .process-step:nth-of-type(9) .circle{animation-delay:-2s}
+.page[data-page="about"] .process-step:nth-of-type(11) .circle{animation-delay:-2.5s}
+.page[data-page="about"] .process-step:nth-of-type(13) .circle{animation-delay:-3s}
+.page[data-page="about"] .process-step:nth-of-type(15) .circle{animation-delay:-3.5s}
+@media(max-width:980px){
+  .page[data-page="about"] .process-arrow{
+    animation:softFloat 1.4s ease-in-out infinite;
+  }
+}
+
+/* ---------- SOBRE: foto e card com movimento contínuo ---------- */
+.page[data-page="about"] .portrait-card{
+  position:relative;
+  isolation:isolate;
+}
+.page[data-page="about"] .portrait-card::after{
+  content:"";
+  position:absolute;
+  top:-25%;bottom:-25%;left:-18%;
+  width:18%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.78),transparent);
+  filter:blur(1px);
+  pointer-events:none;
+  animation:cardSheenLoop 7.2s ease-in-out infinite;
+}
+.page[data-page="about"] .portrait{
+  animation:portraitRing 5.4s ease-in-out infinite;
+}
+.page[data-page="about"] .portrait img{
+  transform-origin:center;
+  animation:photoKenBurns 8.5s ease-in-out infinite;
+}
+.page[data-page="about"] .portrait-card .pill{
+  animation:pillFloat 4.2s ease-in-out infinite;
+}
+.page[data-page="about"] .portrait-card .pill:nth-child(2){animation-delay:-.7s}
+.page[data-page="about"] .portrait-card .pill:nth-child(3){animation-delay:-1.4s}
+.page[data-page="about"] .portrait-card .pill:nth-child(4){animation-delay:-2.1s}
+
+/* ---------- FORMAÇÃO: cards vivos, cada um em fase diferente ---------- */
+.page[data-page="formation"] .formation-degree-card{
+  background:
+    radial-gradient(circle at 85% 14%,rgba(206,112,140,.10),transparent 30%),
+    radial-gradient(circle at 8% 90%,rgba(103,170,173,.09),transparent 32%),
+    linear-gradient(125deg,#fff 0%,#fffaf8 45%,#fdf8fb 70%,#fff 100%);
+  background-size:160% 160%;
+  animation:gradientDrift 9.5s ease-in-out infinite,formationFloat 6.3s ease-in-out infinite;
+}
+.page[data-page="formation"] .formation-degree-card:nth-child(2){
+  animation-delay:-2.1s,-1.1s;
+}
+.page[data-page="formation"] .formation-degree-card:nth-child(3){
+  animation-delay:-4.2s,-2.2s;
+}
+.page[data-page="formation"] .formation-degree-card .feature-icon{
+  animation:iconOrbitWiggle 4.6s ease-in-out infinite!important;
+}
+.page[data-page="formation"] .formation-degree-card:nth-child(2) .feature-icon{animation-delay:-1.25s!important}
+.page[data-page="formation"] .formation-degree-card:nth-child(3) .feature-icon{animation-delay:-2.5s!important}
+.page[data-page="formation"] .formation-level{
+  background:linear-gradient(90deg,var(--rose-soft),#fff,var(--rose-soft));
+  background-size:200% 100%;
+  animation:badgeShimmer 3.8s linear infinite;
+}
+.page[data-page="formation"] .pm3-card .feature-icon,
+.page[data-page="formation"] .tool .tool-icon{
+  animation:softFloat 4.8s ease-in-out infinite;
+}
+.page[data-page="formation"] .pm3-card:nth-child(2) .feature-icon{animation-delay:-1.2s}
+.page[data-page="formation"] .pm3-card:nth-child(3) .feature-icon{animation-delay:-2.4s}
+
+/* ---------- IA & LLMs: sistema orbital animado ---------- */
+.ai-visual-shell{
+  display:grid;
+  place-items:center;
+  min-height:470px;
+}
+.ai-visual-shell::before{
+  animation:gradientDrift 9s ease-in-out infinite;
+}
+.ai-orbit-system{
+  position:relative;
+  width:min(390px,82%);
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+}
+.ai-orbit{
+  position:absolute;
+  border-radius:50%;
+  border:1px dashed rgba(91,49,85,.20);
+}
+.ai-orbit::before{
+  content:"";
+  position:absolute;
+  inset:-7px;
+  border-radius:inherit;
+  border:1px solid rgba(103,170,173,.08);
+}
+.ai-orbit-outer{
+  width:100%;height:100%;
+  animation:orbitCW 20s linear infinite;
+}
+.ai-orbit-mid{
+  width:73%;height:73%;
+  border-style:solid;
+  border-color:rgba(103,170,173,.20);
+  animation:orbitCCW 13s linear infinite;
+}
+.ai-orbit-inner{
+  width:49%;height:49%;
+  border-color:rgba(206,112,140,.25);
+  animation:orbitCW 9.5s linear infinite;
+}
+.ai-core-animated{
+  position:relative;
+  z-index:5;
+  width:158px;height:158px;border-radius:50%;
+  display:grid;place-items:center;align-content:center;
+  color:#fff;text-align:center;
+  background:
+    radial-gradient(circle at 35% 30%,rgba(255,255,255,.20),transparent 27%),
+    linear-gradient(145deg,var(--rose),var(--mauve));
+  animation:corePulseV7 4.4s ease-in-out infinite;
+}
+.ai-core-animated strong{
+  font:500 37px/1 var(--serif);
+}
+.ai-core-kicker{
+  font:500 23px/1 var(--serif);
+  margin-bottom:4px;
+}
+.ai-node{
+  position:absolute;
+  min-width:72px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.92);
+  border:1px solid var(--line);
+  box-shadow:0 8px 22px rgba(82,48,73,.08);
+  color:var(--plum);
+  font-size:10px;
+  font-weight:800;
+  text-align:center;
+}
+.ai-orbit-outer .node-a{top:-11px;left:50%;transform:translateX(-50%)}
+.ai-orbit-outer .node-b{bottom:-11px;left:50%;transform:translateX(-50%) rotate(180deg)}
+.ai-orbit-inner .node-c{top:50%;left:-43px;transform:translateY(-50%) rotate(-360deg)}
+.ai-orbit-inner .node-d{top:50%;right:-43px;transform:translateY(-50%) rotate(-360deg)}
+.ai-dot{
+  position:absolute;
+  width:14px;height:14px;border-radius:50%;
+  background:linear-gradient(145deg,var(--gold),var(--rose));
+  box-shadow:0 0 0 6px rgba(201,154,76,.08),0 0 18px rgba(206,112,140,.20)
+}
+.ai-orbit-mid .dot-a{top:-7px;left:50%}
+.ai-orbit-mid .dot-b{bottom:-7px;left:20%}
+.ai-core-spark{
+  position:absolute;width:7px;height:7px;border-radius:2px;background:#fff;
+  box-shadow:0 0 15px rgba(255,255,255,.7);
+  animation:sparkBlink 2.6s ease-in-out infinite
+}
+.spark-1{top:22px;right:27px;animation-delay:-.4s}
+.spark-2{bottom:29px;left:25px;animation-delay:-1.2s}
+.spark-3{top:64px;left:17px;animation-delay:-2s}
+.ai-data-stream{
+  position:absolute;
+  left:4%;right:4%;
+  height:2px;
+  border-radius:999px;
+  background:linear-gradient(90deg,transparent,var(--aqua),var(--gold),var(--rose),transparent);
+  opacity:.45;
+  overflow:hidden;
+}
+.ai-data-stream::after{
+  content:"";
+  position:absolute;left:0;top:-2px;
+  width:32%;height:6px;border-radius:999px;
+  background:linear-gradient(90deg,transparent,#fff,var(--aqua),transparent);
+  filter:blur(.2px);
+  animation:streamTravel 3.4s ease-in-out infinite;
+}
+.stream-1{top:24%;transform:rotate(18deg)}
+.stream-2{top:50%;transform:rotate(-12deg)}
+.stream-3{top:72%;transform:rotate(27deg)}
+.stream-2::after{animation-delay:-1.1s}
+.stream-3::after{animation-delay:-2.2s}
+
+/* ---------- CASES / HOME CASES: movimento automático, não só hover ---------- */
+.case-illustration::before{animation:orbitCW 18s linear infinite}
+.case-illustration::after{animation:orbitCCW 13s linear infinite}
+.case-illustration .icon-bubble{animation:circleBreath 5.2s ease-in-out infinite}
+.shop-hero i{animation:miniHeroPulse 3.8s ease-in-out infinite;transform-origin:center}
+.shop-product{animation:miniCardFloat 4s ease-in-out infinite}
+.shop-product:nth-child(2){animation-delay:-.8s}
+.shop-product:nth-child(3){animation-delay:-1.6s}
+.shop-product:nth-child(4){animation-delay:-2.4s}
+
+/* brilho automático bem sutil nos thumbnails */
+.case-card .case-thumb::after{
+  animation:cardSheenLoop 9.5s ease-in-out infinite;
+}
+.case-card:nth-child(2n) .case-thumb::after{animation-delay:-2.5s}
+.case-card:nth-child(3n) .case-thumb::after{animation-delay:-5s}
+
+/* ---------- RESPONSIVO ---------- */
+@media(max-width:650px){
+  .ai-visual-shell{min-height:350px}
+  .ai-orbit-system{width:min(300px,86%)}
+  .ai-core-animated{width:126px;height:126px}
+  .ai-core-animated strong{font-size:30px}
+  .ai-core-kicker{font-size:19px}
+  .ai-node{min-width:58px;padding:6px 8px;font-size:8px}
+  .ai-orbit-inner .node-c{left:-35px}
+  .ai-orbit-inner .node-d{right:-35px}
+}
+
+/* acessibilidade: respeita a preferência do sistema */
+@media(prefers-reduced-motion:reduce){
+  .page[data-page="home"] .strategy-art .core,
+  .page[data-page="home"] .visual-line,
+  .page[data-page="home"] .visual-card,
+  .page[data-page="about"] .process::before,
+  .page[data-page="about"] .process::after,
+  .page[data-page="about"] .process-step .circle,
+  .page[data-page="about"] .portrait-card::after,
+  .page[data-page="about"] .portrait,
+  .page[data-page="about"] .portrait img,
+  .page[data-page="about"] .portrait-card .pill,
+  .page[data-page="formation"] .formation-degree-card,
+  .page[data-page="formation"] .formation-degree-card .feature-icon,
+  .page[data-page="formation"] .formation-level,
+  .page[data-page="formation"] .pm3-card .feature-icon,
+  .page[data-page="formation"] .tool .tool-icon,
+  .ai-orbit,.ai-core-animated,.ai-core-spark,.ai-data-stream::after,
+  .case-illustration::before,.case-illustration::after,.case-illustration .icon-bubble,
+  .shop-hero i,.shop-product,.case-card .case-thumb::after{
+    animation:none!important;
+  }
+}
+
 </style>
 </head>
 
@@ -827,8 +1384,31 @@ textarea{min-height:130px;resize:vertical}
         <p class="lead">LLMs como copilotos para produto, projetos, operações e tomada de decisão — com segurança, governança e revisão humana.</p>
         <div class="actions"><button class="btn btn-primary" data-scroll="labDemo">Testar demonstração →</button><button class="btn btn-outline" data-route="cases">Ver cases</button></div>
       </div>
-      <div class="visual-shell reveal" style="display:grid;place-items:center">
-        <div style="width:170px;height:170px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,var(--rose),var(--mauve));color:#fff;font:500 33px var(--serif);box-shadow:0 0 0 18px rgba(206,112,140,.08),0 0 0 40px rgba(103,170,173,.06)">IA &<br>LLMs</div>
+      <div class="visual-shell reveal ai-visual-shell" aria-label="Sistema visual animado de IA e LLMs conectando contexto, dados, decisão e entrega">
+        <div class="ai-orbit-system" aria-hidden="true">
+          <div class="ai-orbit ai-orbit-outer">
+            <span class="ai-node node-a">Dados</span>
+            <span class="ai-node node-b">Contexto</span>
+          </div>
+          <div class="ai-orbit ai-orbit-mid">
+            <span class="ai-dot dot-a"></span>
+            <span class="ai-dot dot-b"></span>
+          </div>
+          <div class="ai-orbit ai-orbit-inner">
+            <span class="ai-node node-c">Decisão</span>
+            <span class="ai-node node-d">Entrega</span>
+          </div>
+          <div class="ai-core-animated">
+            <span class="ai-core-kicker">IA &</span>
+            <strong>LLMs</strong>
+            <i class="ai-core-spark spark-1"></i>
+            <i class="ai-core-spark spark-2"></i>
+            <i class="ai-core-spark spark-3"></i>
+          </div>
+          <div class="ai-data-stream stream-1"></div>
+          <div class="ai-data-stream stream-2"></div>
+          <div class="ai-data-stream stream-3"></div>
+        </div>
       </div>
     </div>
   </div>
